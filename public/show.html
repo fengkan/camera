@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>3D Camera by Project MakerLover - 3D模型展示页 - 拍下你第一张3D相片</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+		<link rel="stylesheet" type="text/css" href="show.css">
+
+		<script src="lib/three.min.js"></script>
+		<script src="lib/OBJLoader.js"></script>
+		<script src="lib/MTLLoader.js"></script>
+		<script src="lib/OBJMTLLoader.js"></script>
+		<script src="lib/jquery-git1.js"></script>
+		<script src="threed_mtl_show.js"></script>
+
+		<script>
+			$( document ) .ready( function() {
+
+				// IE监测 (눈_눈)
+				if ( navigator.userAgent.indexOf( "IE" ) >= 0 ) {
+					$( "#browser_text" ).fadeIn( 0 ) ;
+				}
+				var hottest_ids = [ "8a5" , "8ac" , "8cc" , "806", "829", "897", "a1e", "a45", "ad9", "eb0", "b40", "bac", "bbf", "e9c", "f71", "fc1" ] ;
+
+				// 显示默认模型，或者通过传入id进行显示
+				var default_id = request_params( "id" ) || hottest_ids[Math.floor(Math.random()*hottest_ids.length)] ;
+				if ( default_id ) 
+					go_query( default_id ) ; 
+
+				// 在精选模型中加入内容 (๑•̀ㅂ•́)و✧
+				var modula_str = '<a class="hottest_block" href="javascript:go_query(\'###\)"><img src="photo/hottest/###.jpg"></a>'
+				// modula_str.replace( /\#\#\#/ , "asd" ).replace( /\#\#\#/ , "asd" ) ;
+				
+				var modula_str = '<div class="thumbnailimage"><div class="thumb_container"><div class="large_thumb"><a href="javascript:go_query(\'###\')" class="hottest_block"><img src="photo/hottest/###.png" width="54px" height="54px"></a></div></div></div>';
+				for ( i in hottest_ids ) 
+				{
+					var html_str = modula_str.replace( /\#\#\#/ , hottest_ids[ i ] ).replace( /\#\#\#/ , hottest_ids[ i ] ) ;
+					$( ".thumbnails" ).prepend( html_str ) ;
+				}
+			} ) ;
+
+			function query()
+			{
+				var model_id = document.getElementById( "query_model_id" ).value ;
+				go_query( model_id ) ;
+			}
+
+			function go_query( model_id )
+			{
+				$( "#info_area" ).text( "" ) ;
+				if ( !model_id ) model_id = "" ;
+				if ( model_id.length == 0 )
+				{
+					$( "#bottom_text" ).text( "请输入一个正确的id欸(ò_ó)" ) ;
+				} else {
+					$( "#bottom_text" ).text( "读取中..." ) ;
+					// var data = {"id":"fengkan","status":"done"} ;
+					// var data = {"id":"not found","status":"not found"} ;
+					// var data = {"id":"feb","status":"failed","reason":"抱歉，由于拍摄时的失误，未能取得足够的照片生成您的3D模型。"};
+					$.getJSON( "/jobs/" + model_id + ".json", function( data ) {
+						if ( data.status == "done" )
+						{
+							go_show_model( model_id ) ;
+							$( "#bottom_text" ).text( "" ) ;
+							$( "#download_button" ).attr( "href" , "/obj/" + model_id + "/" + model_id + ".zip" ) ;
+						} else if ( data.status == "failed" ) 
+						{
+							$( "#bottom_text" ).text( data.reason ) ;
+							$( "#bottom_text" ).width( "300px" ) ;
+							$( "#bottom_text" ).css( "color", "red" )  ;
+						} else {
+							$( "#bottom_text" ).text( "由于嘉年华拍张量超过预期，建模可能需要更多时间，请您稍等！您可以添加微信号 fengkan 查询进度，谢谢~" ) ;
+							$( "#bottom_text" ).width( "300px" ) ;
+							$( "#bottom_text" ).css( "color", "red" )  ;
+						}
+					} ) ;
+				}
+			}
+
+			function go_show_model( model_id )
+			{
+				// $( "#input_background" ).fadeOut( 500 ) ;
+				var obj_name = "/obj/" + model_id + "/" + model_id + ".obj" ,
+					mtl_name = "/obj/" + model_id + "/" + model_id + ".mtl" ;
+				setTimeout( function() { initialize_three_3d( obj_name , mtl_name ) ; } , 500 ) ;
+			}
+
+			function request_params(paras) {
+			    var url = location.href;
+			    var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+			    var paraObj = {}
+			    for (i = 0; j = paraString[i]; i++) {
+			        paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+			    }
+			    var returnValue = paraObj[paras.toLowerCase()];
+			    if (typeof (returnValue) == "undefined") {
+			        return "";
+			    } else {
+			        return returnValue;
+			    }
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div id="input_background">
+
+			<div id="hottest_area">
+				<p class="title_text">大家的模型</p>
+				<div class="thumbnails"></div>
+				<div id="hottest_area_container">
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+
+			<div id="input_area">
+				<p class="title_text">模型查询</p>
+				<p>在这里输入拍照的时候获得到的照片ID.</p>
+				<p>点击查询, 马上呈现真实3D相片</p>
+				<form id="input_form">
+					<input id="query_model_id" type="text" placeholder="请输入查询照片的ID">
+					<a id="query_button" class="btn" href="javascript:query()">查询</a>
+					<div class="clearfix"> </div>
+				</form>
+				<p id="bottom_text"> </p>
+				<p id="browser_text" style="font-size: 12px; margin-bottom: 0; line-height: 14px;">
+					[小提醒] 系统监测到您可能在使用IE内核浏览器, </br>
+					继续使用该浏览器可能会造成模型无法正常显示的情况. </br>
+					或者下载最新浏览器: <a href="http://www.firefox.com.cn/" target="_blank">firefox</a> <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">chrome</a>
+				</p>
+			</div>
+
+		</div>
+
+		<div id="three_mtl_show_container">
+			<div id="button_area">
+				<a id="return_button" href="index.html" class="btn">回到首页</a>
+				<a id="download_button" href="" class="btn">模型下载</a>
+				<a id="faq" href="/orders/new?job_id=fc1" class="btn">打印模型！</a>
+				<div class="clearfix"> </div>
+			</div>
+			<div id="info_area">
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-41507401-2', 'makerlover.cn');
+			ga('send', 'pageview');
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<h1>pay</h1>
+
+<table width="100%" cellspacing="10" cellpadding="0" border="0" style="text-align:left">
+        <tbody><tr>
+          <td><h1 style="padding:0px;">付款金额<span class="color-red">¥780</span>元</h1>
+            账户余额<span class="color-red">¥0.00</span>元
+                        ，您的余额不够完成本次付款，还需要支付<span class="color-red">¥780</span>元
+            </td>
+        </tr>
+        <form onsubmit="return IsPay()" target="_blank" method="post" action="PaySelect.php"></form>
+        <tr>
+          <td><strong><br>
+            网银支付：<br>
+            <br>
+            </strong></td>
+        </tr>
+        <tr>
+          <td><strong><br>
+            其他支付方式：<br>
+            <br>
+            </strong></td>
+        </tr>
+        <tr>
+          <td><ul class="paylist">
+              <li style="float:none; width:auto">
+                <label for="gateway_ALIPAY">
+                  <input type="radio" value="ALIPAY" id="gateway_ALIPAY" name="gateway">
+                <img src="/Images/Pay/zhifubao.gif"></label>淘宝用户使用（如没有数字证书将转往网银通道）</li>
+              <li style="float:none; width:auto">
+                <label for="gateway_TENPAY">
+                  <input type="radio" value="TENPAY" name="gateway" id="gateway_TENPAY">
+                  <img src="/Images/Pay/caifutong.gif"></label>
+                觉推荐：无需注册，支持国内各大银行及线下支付</li>
+              <!--li style="float:none; width:auto">
+                <label for="gateway_BILL99">
+                  <input id="gateway_BILL99" name="gateway" type="radio" value="BILL99">
+                  <img src="/Images/Pay/kuaiqian.gif"></label>支持国内各大银行及线下支付</li-->
+            </ul></td>
+        </tr>
+        <tr>
+          <td><br>
+          <br>
+          <br>
+          <input type="hidden" value="6975" id="OrderId" name="OrderId">
+          <input type="hidden" value="" id="Type" name="Type"></td>
+        </tr>
+        
+      </tbody></table>
+<form action="/orders/pay" method="post">
+
+<input type="submit" value="确定，去付款" name="commit" class="btn btn-primary">
+</form>
+
+
+
+<%= link_to 'Back', orders_path %>

@@ -1,0 +1,39 @@
+<h1>New order</h1>
+
+<form action="/orders/confirm" method="post">
+<div class="extrainfo">
+		<div class="e_item">
+		<div class="e_left inline">邮箱：<span class="font_red">*</span></div>
+		<div class="e_right inline">
+		<input type="text" maxlength="40" class="e_name" id="email" name="email">
+		<div class="e_item">
+		<div class="e_left inline">密码：<span class="font_red">*</span></div>
+		<div class="e_right inline">
+		<input type="password" maxlength="40" class="e_name" id="password" name="password">
+		<div class="e_item">
+		<div class="e_left inline">确认密码：<span class="font_red">*</span></div>
+		<div class="e_right inline">
+		<input type="password" maxlength="40" class="e_name" id="email">
+	</div>
+		<div class="e_item">
+		<div class="e_left inline">收货人姓名：<span class="font_red">*</span></div>
+		<div class="e_right inline">
+		<input type="text" maxlength="20" class="e_name" id="name" name="name">
+	</div>
+	<div class="e_item">
+		<div class="e_left inline">地址：<span class="font_red">*</span></div>
+		<div class="e_right inline">
+		<input type="text" maxlength="20" class="e_name" id="address" name="address">
+	</div>
+	<div class="e_item">
+		<div class="e_left inline">手机：<span class="font_red"></span></div>
+		<div class="e_right inline">
+		<input type="text" class="e_telphone" id="phone" name="phone">
+		</div>
+	</div>
+			<input type="hidden" value="<%= @job.name %>" id="job_id" name="job_id">
+
+<%= @job.name %><br>
+<%= @job.status %>
+<input type="submit" value="确认订单" name="commit" class="btn btn-primary">
+</form>
