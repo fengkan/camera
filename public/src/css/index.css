@@ -1,0 +1,264 @@
+/* CSS Document */
+
+ul, li {
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
+}
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, p, blockquote, th, td, ol, ul, li, img {
+	margin: 0;
+	padding: 0;
+	border: 0
+}
+body {
+	font-family: Microsoft YaHei, SimHei, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #575e61;
+}
+/*----------------导航-----*/
+.navbar-fixednav {
+	background: #fff;
+	border: #ccd0cc 1px solid;
+	font-size: 18px;
+	margin-bottom: 0;
+}
+.navbar-fixednav .navbar-header {
+	padding-top: 10px;
+}
+.navbar-fixednav a {
+	color: #99a6ad;
+}
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus {
+	color: #78badd;
+}
+.navbar-fixednav li {
+	padding: 0 20px 0;
+}
+.navbar-fixednav .navbar-nav {
+	margin-top: 12px;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+	color: #78badd;
+	background: url(../images/numlist123-12.jpg) no-repeat center bottom
+}
+.navbar-fixednav .li-login {
+	font-size: 14px;
+	padding: 0 10px 0;
+	background: url(../images/numlist123-13.jpg) no-repeat 60px 24px;
+	height: auto;
+}
+.navbar-fixednav .li-login a {
+	margin: 0 5px;
+	float: left;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-top: 16px
+}
+@media(max-width:767px) {
+.navbar-fixednav .li-login {
+	overflow: hidden;
+	display: block;
+	padding-top: 0;
+}
+}
+/* Carousel base class */
+.carousel {
+	height: 607px;
+	margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+	z-index: 10;
+}
+/* Declare heights because of positioning of img element */
+.carousel .item {
+	height: 607px;
+}
+.carousel-inner > .item > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	height: 607px;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+	background-color: #dcdcdc
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+	background-color: #000
+}
+
+ @media (max-width:1680px) {
+.carousel {
+	height: 531px;
+	margin-bottom: 50px;
+}
+.carousel .item {
+	height: 531px;
+}
+.carousel-inner > .item > img {
+	height: 531px;
+}
+}
+ @media (max-width:1440px) {
+.carousel {
+	height: 455px;
+	margin-bottom: 40px;
+}
+.carousel .item {
+	height: 455px;
+}
+.carousel-inner > .item > img {
+	height: 455px;
+}
+}
+ @media (max-width:1280px) {
+.carousel {
+	height: 405px;
+	margin-bottom: 30px;
+}
+.carousel .item {
+	height: 405px;
+}
+.carousel-inner > .item > img {
+	height: 405px;
+}
+}
+.carousel-indicators li {
+	background: url(../images/numlist123-2.png) no-repeat;
+	width: 14px;
+	height: 14px;
+	border: 0;
+	margin: 0 5px;
+}
+.carousel-indicators .active {
+	background: url(../images/numlist123-1.png) no-repeat !important;
+	width: 14px;
+	height: 14px;
+	margin: 0 5px
+}
+.marketing {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+ @media (min-width: 768px) {
+/* Remove the edge padding needed for mobile */
+.marketing {
+	padding-left: 0;
+	padding-right: 0;
+}
+}
+.index-imgs {
+	text-align: center;
+	background: url(../images/numlist123-5.jpg) no-repeat right center;
+	padding: 30px 0;
+}
+.index-imgs p, .index-imgslast p {
+	margin-top: 40px;
+	font-size: 20px;
+}
+.index-imgslast {
+	text-align: center;
+	padding: 30px 0;
+}
+.index-triangle {
+	background: url(../images/numlist123-6.jpg) no-repeat center 0;
+	height: 20px;
+	margin: 20px 0;
+}
+.index-text {
+	text-align: center;
+	font-size: 30px;
+	padding-bottom: 50px;
+	line-height: 1.4;
+}
+.index-map {
+	position: relative;
+}
+.index-maptext {
+	position: absolute;
+	background: url(../images/numlist123-3.png) no-repeat;
+	left: 0;
+	top: 10px;
+	width: 13px;
+	height: 25px;
+	display: block;
+	z-index: 10;
+}
+.index-mapin .divtitle {
+	font-size: 24px;
+	line-height: 1.2;
+	padding-bottom: 15px;
+}
+.index-mapin {
+	background: #f4112c;
+	filter: Alpha(opacity=80);
+	-moz-opacity: .8;
+	opacity: 0.8;
+	left: 13px;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	padding: 20px 25px;
+	color: #fff;
+}
+.index-faq {
+	background: url(../images/numlist123-9.jpg) repeat-x center center;
+	margin-top: 50px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+.index-faq span {
+	background: #fff;
+	font-size: 24px;
+	color: #9b9ea0;
+	padding: 0 11px;
+}
+.index-faqdl dl {
+	padding-bottom: 30px;
+}
+.index-faqdl dt {
+	background: url(../images/numlist123-10.jpg) no-repeat;
+	padding-left: 35px;
+	font-size: 18px;
+	color: #575e61;
+	padding-bottom: 3px;
+}
+.index-faqdl dd {
+	padding-left: 35px;
+	font-size: 14px;
+	color: #999;
+}
+.footer-div {
+	border-top: 2px solid #e1e2e2;
+	padding-top: 5px;
+	font-size: 14px;
+	color: #9b9ea0;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+.footer-div a {
+	color: #9b9ea0;
+	margin: 0 5px;
+}
+@media screen and (max-width: 640px) and (min-width:240px) {
+.carousel {
+	height: 202px;
+	margin-bottom: 15px;
+}
+.carousel .item {
+	height: 202px;
+}
+.carousel-inner > .item > img {
+	height: 202px;
+}
+.index-imgslast, .index-imgs {
+	padding: 15px 0;
+}
+.index-text {
+	padding-bottom: 20px
+}
+.index-faq dl {
+	padding-bottom: 15px;
+}
+}
