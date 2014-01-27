@@ -11,10 +11,10 @@ Camera::Application.routes.draw do
 	
   devise_for :users
 
-    resources :jobs
-    match '' => 'misc#index', :via => :get
-    match 'faq' => 'misc#faq', :via => :get
-    match 'contact_us' => 'misc#contactus', :via => :get
+    match 'job/show' => 'jobs#show'
+    match '' => 'misc#index'
+    match 'faq' => 'misc#faq'
+    match 'contact_us' => 'misc#contactus'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
