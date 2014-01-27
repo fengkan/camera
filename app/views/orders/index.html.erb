@@ -1,21 +1,45 @@
-<h1>Listing orders</h1>
-
-<table>
+<div class="padding-top68">
+  <div class="container">
+     <div class="indent-warp">
+     <div class="orderlist-top fn18">订单列表</div>
+     <div class="padding-top20 col-lg-12">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered indent-price text-center">
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th width="80px" class="text-center">模型</th>
+    <th class="text-center">订单号</th>
+   <th class="text-center">快递地址 </th>
+   <th class="text-center" width="100px">状态</th>
+   <th class="text-center">创建时间</th>
+    <th class="text-center">快递号</th>
   </tr>
-
+         
 <% @orders.each do |order| %>
   <tr>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><img src="/images/numlist123-20.jpg" /></td>
+    <td><%= order.id %></td>
+    <td><%= order.shipment.address %></td>
+      <td><%=
+        case order.status
+            when 'new'
+            '<span class="orderlist-state4"><a href="#">去付款</a></span><p class="margin-top5"><a href="#" style="color:#999;">取消订单</a></p>'.html_safe
+            when 'pending'
+            '<span class="orderlist-state1">等待制作</span>'.html_safe
+            when 'making'
+            '<span class="orderlist-state">制作中...</span>'.html_safe
+            when 'delivering'
+            '<span class="orderlist-state2">配送中</span>'.html_safe
+            when 'received'
+            '<span class="orderlist-state3">已签收</span>'.html_safe
+            else
+            '<span class="orderlist-state"></span>'.html_safe
+        end
+        %></td>
+    <td><%= order.created_at %></td>
+    <td><%= order.logistics %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Order', new_order_path %>
+</div>
+     </div>
+  </div>
+</div>

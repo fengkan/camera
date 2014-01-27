@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
 	belongs_to :user
-	has_one :shipment
+	belongs_to :shipment
 	has_many :order_histories
 end
