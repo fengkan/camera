@@ -93,6 +93,9 @@ class OrdersController < ApplicationController
 		order_item.save
 	end
 	
+    def success
+    end
+    
 	def pay
     @url = WebAlipayUtil.construct_auth_and_excute_url("111", 0.01, "")
 		redirect_to @url

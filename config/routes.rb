@@ -2,7 +2,7 @@ Camera::Application.routes.draw do
 
   resources :orders do
 	  collection do  
-	    post :pay, :confirm
+	    post :pay, :confirm, :success
 	    get :ali_callback
 	  end 
   
