@@ -33,9 +33,23 @@
         <li><a href="#" target="_blank"> 查看</a></li>
         <li><a href="/orders">订单</a></li>
         <li><a href="/contact_us">联系我们</a></li>
-        <li class="li-login" style="display:none"><a href="#">登录</a><a href="#">注册</a></li>
-        <li class="li-login"><a href="#">table...<input name="" type="button"  value="退出" class="user-quick"/>
-          </a></li>
+          <% if signed_in?%>
+          <script type="text/javascript">
+              function logout(){
+                  $.ajax({
+                      url: '/users/sign_out',
+                      type: 'DELETE',
+                      success: function(result) {
+                          var root=window.location.href.split('/')[2],protocol=window.location.href.split('/')[0];
+                          window.location.href=protocol+'//'+root;
+                      }
+                  });
+              }
+          </script>
+        <li class="li-login"><a href="#"><%=current_user.email%><input name="" type="button"  value="退出" class="user-quick" onclick="logout()"/></a></li>
+          <%else%>
+        <li class="li-login"><a href="#">登录</a><a href="#">注册</a></li>
+                <%end%>
       </ul>
     </div>
   </div>
