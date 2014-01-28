@@ -78,19 +78,12 @@ class OrdersController < ApplicationController
     end
   end
   
-  def confirm
-  	@user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password])
-		sign_in @user
-
-		shipment = @user.shipments.build(:name => params[:name], :address => params[:address], :phone => params[:phone])
-		shipment.save
-
-		@order = @user.orders.build(:shipment_id => shipment.id, :status => "new")
-		@order.save
-
-		job = Job.find_by_name_and_status(params['job_id'], 'done')
-		order_item = OrderItem.new(:job_id => job.id, :order_id => @order.id)
-		order_item.save
+    def place
+        @job_id=params[:job_id]
+    end
+    
+    def confirm
+        @job_id=params[:job_id]
 	end
 	
     def success

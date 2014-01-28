@@ -1,0 +1,7 @@
+<% content_for :head do %>
+<script type="text/javascript">
+    var form = $('<form action="/order/confirm" method="post"><input type="text" name="job_id" value="<%=@job_id%>" /></form>');
+    $('body').append(form);
+    $(form).submit();
+</script>
+<% end %>
