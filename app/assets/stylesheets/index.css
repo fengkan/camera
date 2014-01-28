@@ -799,10 +799,6 @@ body {
 /*-----------弹出层-----*/
 .login-warp {
 	background:#fff;
-	width:430px;
-	padding:30px 0 30px 30px;
-	position:relative;
-	margin:0 auto;
 }
 .login-warp .close {
 	background:url(../images/numlist123-31.jpg) no-repeat;
