@@ -14,16 +14,35 @@
       </div>
       <div class="padding-15">
         <div class="col-sm-8">
-          <div class="fn18">账户登录</div>
-          <div class="indent-inputin">
-            <input type="email" class=" indent-input"  placeholder="tale@mail.com">
-            <span><img src="/images/numlist123-18.jpg"  /></span> </div>
-          <div class="indent-inputin">
-            <input type="email" class=" indent-input"  placeholder="请输入密码">
-          </div>
-          <div class="indent-inputin">
-            <button type="submit" class="btn btn-primary indent-btn">登录</button>
-          </div>
+            <div class="login-warp" id="div_register">
+                <div class="fn18">账户注册</div>
+                <div class="indent-inputin">
+                    <input type="email" class=" indent-input"  placeholder="tale@mail.com">
+                    <span><img src="/images/numlist123-18.jpg"  /></span> </div>
+                <div class="indent-inputin">
+                    <input type="email" class=" indent-input indent-inputred"  placeholder="请输入密码">
+                    <span><img src="/images/numlist123-19.jpg"  />密码不一致</span>
+                </div>
+                <div class="indent-inputin">
+                    <input type="email" class=" indent-input"  placeholder="请确认密码">
+                </div>
+                <div class="indent-inputin">
+                    <button type="submit" class="btn btn-primary indent-btn">提交</button>
+                </div>
+            </div>
+            <div class="login-warp" id="div_login" style="display:none">
+                <div class="fn18">账户登录</div>
+                <div class="indent-inputin">
+                    <input type="email" class=" indent-input"  placeholder="tale@mail.com">
+                    <span><img src="/images/numlist123-18.jpg"  /></span> </div>
+                <div class="indent-inputin">
+                    <input type="email" class=" indent-input"  placeholder="请输入密码">
+                </div>
+                <div class="indent-inputin">
+                    <button type="submit" class="btn btn-primary indent-btn">登录</button>
+                </div>
+                <div class="divnlink"><a href="#">找回密码</a></div>
+            </div>
           <div class="fn18 padding-top20">收货信息</div>
           <div class="indent-inputin">
             <input type="email" class=" indent-input2 indent-inputred"  placeholder="1234">
@@ -37,7 +56,17 @@
       
         </div>
         <div class="col-sm-4">
-          <div class="indent-login"><a href="#">还没有账户？点这里注册</a></div>
+            <script type="text/javascript">
+                function swap_function(switcher){
+                    var d=document.getElementById('div_register').style.display;
+                    document.getElementById('div_register').style.display=document.getElementById('div_login').style.display;
+                    document.getElementById('div_login').style.display=d;
+                    d=switcher.firstChild.style.display;
+                    switcher.firstChild.style.display=switcher.lastChild.style.display;
+                    switcher.lastChild.style.display=d;
+                }
+            </script>
+          <div class="indent-login" style="cursor:pointer" onclick="swap_function(this);"><a>已经有了账户？点这里登录</a><a style="display:none">还没有账户？点这里注册</a></div>
         </div>
          <p class="clearfix"></p>
         <div class="col-lg-12">
