@@ -1,7 +1,110 @@
-<% content_for :head do %>
+<%content_for :head do%>
+    <%= javascript_include_tag "parsley.min"%>
+<%end%>
+<div class="padding-top68">
+  <div class="container">
+    <div class="indent-warp">
+      <div class="indent-step">
+        <div class="col-xs-4 step-stop"><span>1</span>
+          <p>确认支付信息</p>
+        </div>
+        <div class="col-xs-4 step-bg"><span>2</span>
+          <p>选择一个支付方进行支付</p>
+        </div>
+        <div class="col-xs-4 step-bg"><span>3</span>
+          <p>支付完成，等待收货</p>
+        </div>
+      </div>
+      <div class="padding-15">
+        <div class="col-sm-8">
+            <form  parsley-validate>
+                <div class="login-warp" id="div_register">
+                    <div class="fn18">账户注册</div>
+                    <div class="indent-inputin">
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="text" class="indent-input"  placeholder="tale@mail.com" parsley-type="email" parsley-trigger="change" parsley-error-container="#register_email_validation"/>
+                                </td>
+                                <td><span><img src="/images/numlist123-18.jpg"  /></span></td><td id="register_email_validation"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="indent-inputin">
+                        <input type="email" class="indent-input"  placeholder="请输入密码">
+                        <span><img src="/images/numlist123-19.jpg"  />密码不一致</span>
+                    </div>
+                    <div class="indent-inputin">
+                        <input type="email" class=" indent-input"  placeholder="请确认密码">
+                    </div>
+                    <div class="indent-inputin">
+                        <button type="submit" class="btn btn-primary indent-btn">提交</button>
+                </div>
+            </div>
+            </form>
+            <div class="login-warp" id="div_login" style="display:none">
+                <div class="fn18">账户登录</div>
+                <div class="indent-inputin">
+                    <input type="email" class=" indent-input"  placeholder="tale@mail.com">
+                    <span><img src="/images/numlist123-18.jpg"  /></span> </div>
+                <div class="indent-inputin">
+                    <input type="email" class=" indent-input"  placeholder="请输入密码">
+                </div>
+                <div class="indent-inputin">
+                    <button type="submit" class="btn btn-primary indent-btn">登录</button>
+                </div>
+                <div class="divnlink"><a href="#">找回密码</a></div>
+            </div>
+          <div class="fn18 padding-top20">收货信息</div>
+          <div class="indent-inputin">
+            <input type="email" class=" indent-input2 indent-inputred"  placeholder="1234">
+            <span><img src="/images/numlist123-19.jpg"  />请输入你的姓名</span> </div>
+          <div class="indent-inputin">
+            <input type="email" class=" indent-input2"  placeholder="请输入手机号码">
+          </div>
+          <div class="indent-inputin">
+            <input type="email" class=" indent-input3"  placeholder="请输入收货地址">
+          </div>
+      
+        </div>
+        <div class="col-sm-4">
+            <script type="text/javascript">
+                function swap_function(switcher){
+                    var d=document.getElementById('div_register').style.display;
+                    document.getElementById('div_register').style.display=document.getElementById('div_login').style.display;
+                    document.getElementById('div_login').style.display=d;
+                    d=switcher.firstChild.style.display;
+                    switcher.firstChild.style.display=switcher.lastChild.style.display;
+                    switcher.lastChild.style.display=d;
+                }
+            </script>
+          <div class="indent-login" style="cursor:pointer" onclick="swap_function(this);"><a>已经有了账户？点这里登录</a><a style="display:none">还没有账户？点这里注册</a></div>
+        </div>
+         <p class="clearfix"></p>
+        <div class="col-lg-12">
+            <div class="indent-OrderInfo">订单信息</div>
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered indent-price">
+            <tr>
+              <th width="40" class="text-center">
+  <input type="checkbox" id="inlineCheckbox1" value="option1"> 
+</th>
+              <th>名称</th>
+              <th width="15%" class="text-center">价格</th>
+            </tr>
+            <tr>
+              <td class="text-center">  <input type="checkbox" id="inlineCheckbox1" value="option1"> </td>
+              <td><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%=@job_id%></span></td>
+              <td class="text-center fn18">123元</td>
+            </tr>
+        
+          </table>
+          <p class="text-right">共计：<span class="indent-total">123元</span></p>
+          <div class="text-center"> <button type="button" class="btn btn-primary btn-lg indent-btn2">确认订单</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script type="text/javascript">
-    var form = $('<form action="/order/confirm" method="post"><input type="text" name="job_id" value="<%=@job_id%>" /></form>');
-    $('body').append(form);
-    $(form).submit();
+    $('form').parsley({ successClass: '', errorClass: 'indent-inputred' });
 </script>
-<% end %>

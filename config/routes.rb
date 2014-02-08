@@ -11,7 +11,7 @@ Camera::Application.routes.draw do
 	
   devise_for :users
 
-    match 'order/confirm' => 'orders#confirm', via: :post
+    match 'order/confirm' => 'orders#confirm'
     match 'order/place/:job_id' => 'orders#place'
     match 'job/show' => 'jobs#show'
     match '' => 'misc#index'
