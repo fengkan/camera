@@ -384,7 +384,6 @@ body {
 .indent-input:hover, .indent-input2:hover, .indent-input3:hover {
 	background: #fff;
 	box-shadow: 0 0 0 0;
-	font-size: 18px;
 	color: #6d7276
 }
 .indent-inputin {
@@ -770,8 +769,8 @@ body {
 	padding-top:3px;
 }
 .payment-bank li input[type="radio"], input[type="checkbox"] {
-	margin: 8px 0 0;
-	margin-top: 6px \9;
+	margin: 10px 0 0;
+	margin-top: 10px \9;
 	/* IE8-9 */
   float:left;
 	line-height: normal;

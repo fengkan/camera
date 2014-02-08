@@ -1,3 +1,6 @@
+<%content_for :head do%>
+    <%= javascript_include_tag "parsley.min","parsley-messages.zh_cn"%>
+<%end%>
 
 <div class="padding-top68">
   <div class="container">
@@ -7,21 +10,32 @@
         <div class="col-sm-8">
 
   <div class="fn18">账户登录</div>
-  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+
+  <form id="new_user" class="simple_form new_user" parsley-validate method="post" action="/users/sign_in" accept-charset="UTF-8">
+
+
     <div class="form-inputs">
     <div class="indent-inputin">
-    <%= f.input :email, :required => false, :autofocus => true, :input_html => { :class => "indent-input"} %>
-    <span><img src="images/numlist123-18.jpg"  /></span>
+
+    <input type="text" value="" size="50" name="user[email]" id="user_email" class="string email optional indent-input" autofocus="autofocus" placeholder="tale@mail.com" required parsley-type="email" parsley-trigger="change" parsley-error-container="#register_email_validation">
+
+
+
     </div><div class="indent-inputin">
-    <%= f.input :password, :required => false, :input_html => { :class => "indent-input"} %>
+ 
+    <input id="user_password" class="password optional indent-input" type="password" size="50" name="user[password]">
+
+
     </div>
   </div>
 
     <div class="indent-inputin">
-    <%= f.button :submit, "登入", :class => "btn btn-primary indent-btn" %>
+
+    <input class="btn btn btn-primary indent-btn" type="submit" value="登入" name="commit">
   </div>
 
-  <% end %>
+ </form>
 
   <div class="divnlink"><a href="#">找回密码</a> <a href="#"> 注册新账户</a> </div>
  	   </div>
