@@ -90,7 +90,14 @@ class OrdersController < ApplicationController
     end
     
 	def pay
-    @url = WebAlipayUtil.construct_auth_and_excute_url("111", 0.01, "")
+    m = params["optionsRadios"]
+
+    case m
+    when 'alipay'
+      @url = WebAlipayUtil.construct_auth_and_excute_url("111", 0.01, "", "")
+    else
+      @url = WebAlipayUtil.construct_auth_and_excute_url("111", 0.01, m, "")
+    end
 		redirect_to @url
 	end
 	

@@ -837,3 +837,7 @@ body {
 }
 .contactUs img{ padding-bottom:10px;}
 .contactUs p{ padding:15px 0;}
+
+.modal-content {
+    border-radius: 0px;
+}
