@@ -7,7 +7,7 @@ class WebAlipayUtil
 
   WEB_NOTIFY_URL =  "#{Settings.HOST}/order/ali_callback"
 
-  def WebAlipayUtil.construct_auth_and_excute_url(order_id,total_fee, callback)
+  def WebAlipayUtil.construct_auth_and_excute_url(order_id,total_fee, bank, callback)
 =begin
     response = WebAlipayUtil.alipay_trade_create(order_id,total_fee)
     if response == nil || response.code != 200
@@ -24,7 +24,7 @@ class WebAlipayUtil
 		puts WEB_NOTIFY_URL
 
     params = {}
-    params["service"] = "trade_create_by_buyer"
+    params["service"] = "create_direct_pay_by_user"
 #    params["format"] = "xml"
 #    params["v"] = "2.0"
     params["partner"] = Settings.ALI_ID
@@ -34,18 +34,20 @@ class WebAlipayUtil
     params["notify_url"] = WEB_NOTIFY_URL
 #		params["return_url"] = WEB_CALL_BACK_URL
 #		params["return_url"] = callback if callback != nil
+params['defaultbank'] = bank if !bank.blank?
 
     params["out_trade_no"] = "print20_" + order_id.to_s
 		params["subject"] = "微米印"
 		params["payment_type"] = "1"
 		params["seller_id"] = Settings.ALI_ID
 
-    params["price"] = total_fee.to_s
-    params["quantity"] = 1.to_s
-    params["logistics_type"] = "EMS"
-    params["logistics_fee"] = "0"
-    params["logistics_payment"] = "SELLER_PAY"
+#    params["price"] = total_fee.to_s
+#    params["quantity"] = 1.to_s
+#    params["logistics_type"] = "EMS"
+#    params["logistics_fee"] = "0"
+#    params["logistics_payment"] = "SELLER_PAY"
 
+    params["total_fee"] = total_fee.to_s
 
 
 =begin

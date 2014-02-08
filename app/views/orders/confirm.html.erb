@@ -1,4 +1,16 @@
+<% content_for :head do %>
+<script>
 
+$(document).ready(function() {
+
+    $('#summit_btn').click(function() {
+      $('#confirm_credit').submit();
+
+    });
+});
+
+</script>
+<% end %>
 <div class="padding-top68">
   <div class="container">
     <div class="indent-warp">
@@ -13,104 +25,66 @@
           <p>支付完成，等待收货</p>
         </div>
       </div>
+<form id="confirm_credit" target="_blank" method="post" action="/orders/pay" accept-charset="UTF-8">
       <div class="col-lg-12 padding-top20">
         <div class="payment-div">您需要支付<span>123</span>元，请选择支付方式</div>
         <div class="fn18 padding-top20">支付平台</div>
         <div class="payment-bank">
           <ul>
+          <% for p in Settings.PAYMENT_PLATFORMS%>
             <li>
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-13.jpg" /> </label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="<%= p.option_value %>" checked>
+                <img src="/images/<%= p.image %>" /> </label>
             </li>
-              <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-16.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-14.jpg" /> </label>
-            </li><li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-15.jpg" /> </label>
-            </li>
-          
+          <% end %>
+         
             </ul>
             <div class="clearfix"></div>
             </div>
         <div class="fn18">网银支付</div>
         <div class="payment-bank">
           <ul>
+
+          <% for p in Settings.PAYMENT_BANKS%>
             <li>
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-1.jpg" /> </label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="<%= p.option_value %>" checked>
+                <img src="/images/<%= p.image %>" /> </label>
             </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-2.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-3.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-4.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-5.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-6.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-7.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-8.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-9.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-10.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-11.jpg" /> </label>
-            </li>
-            <li>
-              <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                <img src="/images/bank-12.jpg" /> </label>
-            </li>
-           
+          <% end %>
           </ul>
           <div class="clearfix"></div>
         </div>
-         <div class="text-center"> <button type="button" class="btn btn-primary btn-lg indent-btn2">去支付~</button></div>
-
+         <div class="text-center"> <button class="btn btn-primary btn-lg indent-btn2" data-toggle="modal" data-target="#myModal" id="summit_btn">去支付~</button></div>
       </div>
+      </form>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="fn18">请你在新打开的网银或第三方支付页面上完成付款</div>
+      </div>
+      <div class="modal-body">
+
+      <div class="password-div">重置密码邮件已经发送到：tale@mail.com
+<br />
+请查收邮件修改密码</div>
+
+      </div>
+
+
+      <div class="modal-footer">
+      <button class="btn btn-primary indent-btn" type="submit">重新选择支付方式</button>
+      <button type="button" class="btn btn-primary indent-btn2">支付成功</button>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
