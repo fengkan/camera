@@ -392,10 +392,11 @@ body {
 	overflow: hidden;
 }
 .indent-inputin span {
-	position: relative;
-	top: 7px;
 	margin-left: 5px;
 	font-size: 12px;
+}
+.indent-inputin td ul{
+    font-size: 12px;
 }
 .indent-btn {
 	background: #78badd;
