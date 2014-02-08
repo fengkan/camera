@@ -93,7 +93,7 @@ class OrdersController < ApplicationController
     m = params["optionsRadios"]
 
     m = "" if m == 'alipay'
-    @url = WebAlipayUtil.construct_auth_and_excute_url("111", 1, m, "")
+    @url = WebAlipayUtil.construct_auth_and_excute_url("1111", 1, m, "")
 
 		redirect_to @url
 	end
