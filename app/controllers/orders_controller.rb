@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-	before_filter :authenticate_user!, :only => 'index'
+	before_filter :authenticate_user!, :only => ['index', 'pay', 'success']
   # GET /orders
   # GET /orders.json
   def index
@@ -77,17 +77,14 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-    def place
-        @job_ids=params[:job_id]
-    end
     
-    def confirm
+  def place
+      @job_id=params[:job_id]
+  end
+    
+  def confirm
         @job_id=params[:job_id]
 	end
-	
-    def success
-    end
     
 	def pay
     m = params["optionsRadios"]
@@ -99,11 +96,28 @@ class OrdersController < ApplicationController
 	end
 	
 	def ali_callback
-		
 		logger = Logger.new('log/ali_callback.log')
 		logger.info(params)		
-		
+
+    if not WebAlipayUtil.sign_valid?(params)
+      logger.info("invalid")
+      render :nothing => true
+      return
+    end
+
+    out_trade_no = params["out_trade_no"]
+    order_id = out_trade_no[out_trade_no.index(Settings.ORDER_PREFIX) + Settings.ORDER_PREFIX.size, out_trade_no.size - Settings.ORDER_PREFIX.size]
+
+    order = Order.find(order_id)
+    order.status = "paid"
+    order.save
+    render :nothing => true
 	end
-	
-	
+
+  def success
+    order_id = params[:id]
+    order = Order.find_by_id_and_status(order_id, "paid")
+  end
+
+
 end

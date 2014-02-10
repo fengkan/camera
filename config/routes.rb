@@ -12,6 +12,7 @@ Camera::Application.routes.draw do
 	
 	
   devise_for :users
+    match 'orders/success/:id' => 'orders#success'
 
     match 'order/confirm' => 'orders#confirm'
     match 'order/place' => 'orders#place'
