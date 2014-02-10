@@ -435,12 +435,16 @@ body {
 	font-size: 24px;
 }
 .indent-btn2 {
-	background: url(../images/numlist123-21.jpg) no-repeat;
+	background: #de7778;
 	border: 0;
 	width: 200px;
 	border-radius: 0;
 	height: 54px;
 	font-size: 18px;
+}
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active {
+    background-color: #b0bbc1;
+    border-color: #357EBD;
 }
 .footer-bg {
 	background: #fff;

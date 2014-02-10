@@ -7,6 +7,14 @@ $(document).ready(function() {
       $('#confirm_credit').submit();
 
     });
+
+  $('input:radio').click(
+      function(){
+        $('#summit_btn').attr( 'disabled', false );
+      }
+  );          
+
+
 });
 
 </script>
@@ -34,7 +42,7 @@ $(document).ready(function() {
           <% for p in Settings.PAYMENT_PLATFORMS%>
             <li>
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="<%= p.option_value %>" checked>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="<%= p.option_value %>">
                 <img src="/images/<%= p.image %>" /> </label>
             </li>
           <% end %>
@@ -49,14 +57,14 @@ $(document).ready(function() {
           <% for p in Settings.PAYMENT_BANKS%>
             <li>
               <label>
-                <input type="radio" name="optionsRadios" id="optionsRadios1" value="<%= p.option_value %>" checked>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="<%= p.option_value %>">
                 <img src="/images/<%= p.image %>" /> </label>
             </li>
           <% end %>
           </ul>
           <div class="clearfix"></div>
         </div>
-         <div class="text-center"> <button class="btn btn-primary btn-lg indent-btn2" data-toggle="modal" data-target="#myModal" id="summit_btn">去支付~</button></div>
+         <div class="text-center"> <button class="btn btn-primary btn-lg indent-btn2" data-toggle="modal" data-target="#myModal" id="summit_btn" disabled="true">去支付~</button></div>
       </div>
       </form>
     </div>

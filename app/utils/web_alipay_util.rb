@@ -32,15 +32,14 @@ class WebAlipayUtil
     params["_input_charset"] = "utf-8"    
 #    params["sign_type"] = "MD5"
     params["notify_url"] = WEB_NOTIFY_URL
-#		params["return_url"] = WEB_CALL_BACK_URL
+		params["return_url"] = WEB_NOTIFY_URL
 #		params["return_url"] = callback if callback != nil
 params['defaultbank'] = bank if !bank.blank?
 
-    params["out_trade_no"] = "print20_" + order_id.to_s
+    params["out_trade_no"] = "123dcamera_" + order_id.to_s
 		params["subject"] = "微米印"
 		params["payment_type"] = "1"
 		params["seller_id"] = Settings.ALI_ID
-
 #    params["price"] = total_fee.to_s
 #    params["quantity"] = 1.to_s
 #    params["logistics_type"] = "EMS"
