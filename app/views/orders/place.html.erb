@@ -27,12 +27,12 @@
                     </div>
                     <div class="indent-inputin">
                         <table><tr><td>
-                            <input type="password" class="indent-input" id="password"  placeholder="请输入密码" parsley-required="true"  parsley-error-container="#register_password_validation"/>
+                            <input type="password" class="indent-input" id="password" placeholder="请输入密码" parsley-required="true" parsley-validation-minlength="1" parsley-minlength="6" parsley-trigger="change" parsley-error-container="#register_password_validation" parsley-minlength-message="密码应至少6位"/>
                             </td><td><span></span></td><td id="register_password_validation"></td></tr></table>
                     </div>
                     <div class="indent-inputin">
                         <table><tr><td>
-                            <input type="password" class="indent-input" id="password_confirmation" placeholder="请确认密码" parsley-required="true" parsley-equalto="#password" parsley-trigger="change" parsley-error-container="#register_confirm_validation" parsley-equalto-message="密码不一致"/>
+                            <input type="password" class="indent-input" id="password_confirmation" placeholder="请确认密码" parsley-required="true" parsley-equalto="#password" parsley-validation-minlength="1" parsley-trigger="change" parsley-error-container="#register_confirm_validation" parsley-equalto-message="密码不一致"/>
                             </td><td><span></span></td><td id="register_confirm_validation"></td></tr></table>
                     </div>
                     <div class="fn18 padding-top20">收货信息</div>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="indent-inputin">
                         <table><tr><td>
-                            <input type="text" class="indent-input2" id="phone"  placeholder="手机号码" parsley-required="true"  parsley-error-container="#phone_validation" parsley-validation-minlength="1" parsley-trigger="keyup" parsley-required-message="请输入手机号码"/>
+                            <input type="text" class="indent-input2" id="phone"  placeholder="手机号码" parsley-required="true"  parsley-error-container="#phone_validation" parsley-regexp="1\d{10}" parsley-trigger="keyup" parsley-required-message="请输入手机号码"/>
                             </td><td><span></span></td><td id="phone_validation"></td></tr></table>
                     </div>
                     <div class="indent-inputin"><table><tr><td>
@@ -55,11 +55,14 @@
                   <div class="login-warp" id="div_login" style="display:none">
                       <div class="fn18">账户登录</div>
                       <div class="indent-inputin">
-                          <input type="email" class=" indent-input"  placeholder="tale@mail.com" parsley-required="true">
-                          <span><img src="/images/numlist123-18.jpg"  /></span>
+                        <table><tr><td>
+                            <input type="text" class="indent-input" id="login_email"  placeholder="tale@mail.com" parsley-required="true" parsley-type="email" parsley-trigger="change" parsley-error-container="#login_email_validation"/>
+                            </td><td><span></span></td><td id="login_email_validation"></td></tr></table>
                       </div>
                       <div class="indent-inputin">
-                          <input type="email" class=" indent-input"  placeholder="请输入密码" parsley-required="true">
+                        <table><tr><td>
+                            <input type="password" class="indent-input" id="login_password" placeholder="请输入密码" parsley-required="true" parsley-trigger="change" parsley-error-container="#login_password_validation" parsley-required-message="别忘了密码"/>
+                            </td><td><span></span></td><td id="login_password_validation"></td></tr></table>
                       </div>
                       <div class="indent-inputin">
                           <button type="submit" class="btn btn-primary indent-btn">登录</button>
@@ -100,13 +103,11 @@
                           <th>名称</th>
                           <th width="15%" class="text-center">价格</th>
                       </tr>
-                      <% @job_ids.each do |job_id|%>
                       <tr>
                           <td class="text-center">  <input type="checkbox" id="job_id" name="job_id" value="option1"  parsley-required="true"  parsley-error-container="#job_id_validation"/></td>
-                          <td><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%=job_id%></span></td>
+                          <td><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%=@job_id%></span></td>
                           <td class="text-center fn18">123元</td>
                       </tr>
-                      <%end%>
                   </table>
                   <table class="indent-inputin"><tr><td><span id="job_id_validation_img"></span></td><td id="job_id_validation"></td></tr></table>
                   <p class="text-right">共计：<span class="indent-total">123元</span></p>
