@@ -79,7 +79,7 @@ class OrdersController < ApplicationController
   end
   
     def place
-        @job_id=params[:job_id]
+        @job_ids=params[:job_id]
     end
     
     def confirm

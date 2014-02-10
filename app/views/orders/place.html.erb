@@ -2,122 +2,169 @@
     <%= javascript_include_tag "parsley.min","parsley-messages.zh_cn"%>
 <%end%>
 <div class="padding-top68">
-  <div class="container">
-    <div class="indent-warp">
-      <div class="indent-step">
-        <div class="col-xs-4 step-stop"><span>1</span>
-          <p>确认支付信息</p>
+    <div class="container">
+      <div class="indent-warp">
+        <div class="indent-step">
+          <div class="col-xs-4 step-stop"><span>1</span>
+              <p>确认支付信息</p>
+          </div>
+          <div class="col-xs-4 step-bg"><span>2</span>
+              <p>选择一个支付方进行支付</p>
+          </div>
+          <div class="col-xs-4 step-bg"><span>3</span>
+              <p>支付完成，等待收货</p>
+          </div>
         </div>
-        <div class="col-xs-4 step-bg"><span>2</span>
-          <p>选择一个支付方进行支付</p>
-        </div>
-        <div class="col-xs-4 step-bg"><span>3</span>
-          <p>支付完成，等待收货</p>
-        </div>
-      </div>
       <div class="padding-15">
-        <div class="col-sm-8">
-            <form  parsley-validate>
+          <form parsley-validate>
+              <div class="col-sm-8">
                 <div class="login-warp" id="div_register">
                     <div class="fn18">账户注册</div>
                     <div class="indent-inputin">
-                        <table>
-                            <tr>
-                                <td>
-                                    <input type="text" class="indent-input"  placeholder="tale@mail.com" required parsley-type="email" parsley-trigger="change" parsley-error-container="#register_email_validation"/>
-                                </td>
-                                <td><span></span></td><td id="register_email_validation"></td>
-                            </tr>
-                        </table>
+                        <table><tr><td>
+                            <input type="text" class="indent-input" id="email"  placeholder="tale@mail.com" parsley-required="true" parsley-type="email" parsley-trigger="change" parsley-error-container="#register_email_validation"/>
+                            </td><td><span></span></td><td id="register_email_validation"></td></tr></table>
                     </div>
                     <div class="indent-inputin">
-                        <input type="password" class="indent-input" id="password"  placeholder="请输入密码" required>
-                        <span></span>
+                        <table><tr><td>
+                            <input type="password" class="indent-input" id="password"  placeholder="请输入密码" parsley-required="true"  parsley-error-container="#register_password_validation"/>
+                            </td><td><span></span></td><td id="register_password_validation"></td></tr></table>
                     </div>
                     <div class="indent-inputin">
-                        <table>
-                            <tr>
-                                <td>
-                                    <input type="password" class="indent-input"  placeholder="请确认密码" required parsley-equalto="#password" parsley-trigger="change" parsley-error-container="#register_password_validation" parsley-equalto-message="密码不一致"/>
-                                </td>
-                                <td><span></span></td><td id="register_password_validation"></td>
-                            </tr>
-                        </table>
+                        <table><tr><td>
+                            <input type="password" class="indent-input" id="password_confirmation" placeholder="请确认密码" parsley-required="true" parsley-equalto="#password" parsley-trigger="change" parsley-error-container="#register_confirm_validation" parsley-equalto-message="密码不一致"/>
+                            </td><td><span></span></td><td id="register_confirm_validation"></td></tr></table>
                     </div>
-                </div>
-            </form>
-            <div class="login-warp" id="div_login" style="display:none">
-                <div class="fn18">账户登录</div>
-                <div class="indent-inputin">
-                    <input type="email" class=" indent-input"  placeholder="tale@mail.com">
-                    <span><img src="/images/numlist123-18.jpg"  /></span> </div>
-                <div class="indent-inputin">
-                    <input type="email" class=" indent-input"  placeholder="请输入密码">
-                </div>
-                <div class="indent-inputin">
-                    <button type="submit" class="btn btn-primary indent-btn">登录</button>
-                </div>
-                <div class="divnlink"><a href="#">找回密码</a></div>
-            </div>
-          <div class="fn18 padding-top20">收货信息</div>
-          <div class="indent-inputin">
-            <input type="email" class=" indent-input2 indent-inputred"  placeholder="1234">
-            <span><img src="/images/numlist123-19.jpg"  />请输入你的姓名</span> </div>
-          <div class="indent-inputin">
-            <input type="email" class=" indent-input2"  placeholder="请输入手机号码">
-          </div>
-          <div class="indent-inputin">
-            <input type="email" class=" indent-input3"  placeholder="请输入收货地址">
-          </div>
-      
-        </div>
-        <div class="col-sm-4">
-            <script type="text/javascript">
+                    <div class="fn18 padding-top20">收货信息</div>
+                    <div class="indent-inputin">
+                        <table><tr><td>
+                            <input type="text" class="indent-input2" id="name"  placeholder="姓名" parsley-required="true"  parsley-error-container="#name_validation" parsley-validation-minlength="1" parsley-trigger="keyup" parsley-required-message="请输入你的姓名"/>
+                            </td><td><span></span></td><td id="name_validation"></td></tr></table>
+                    </div>
+                    <div class="indent-inputin">
+                        <table><tr><td>
+                            <input type="text" class="indent-input2" id="phone"  placeholder="手机号码" parsley-required="true"  parsley-error-container="#phone_validation" parsley-validation-minlength="1" parsley-trigger="keyup" parsley-required-message="请输入手机号码"/>
+                            </td><td><span></span></td><td id="phone_validation"></td></tr></table>
+                    </div>
+                    <div class="indent-inputin"><table><tr><td>
+                        <input type="text" class="indent-input3" id="address"  placeholder="收货地址" parsley-required="true"  parsley-error-container="#address_validation" parsley-validation-minlength="1" parsley-trigger="keyup" parsley-required-message="请输入收货地址"/>
+                        </td><td><span></span></td><td id="address_validation"></td></tr></table>
+                    </div>
+                  </div>
+                  
+                  <div class="login-warp" id="div_login" style="display:none">
+                      <div class="fn18">账户登录</div>
+                      <div class="indent-inputin">
+                          <input type="email" class=" indent-input"  placeholder="tale@mail.com" parsley-required="true">
+                          <span><img src="/images/numlist123-18.jpg"  /></span>
+                      </div>
+                      <div class="indent-inputin">
+                          <input type="email" class=" indent-input"  placeholder="请输入密码" parsley-required="true">
+                      </div>
+                      <div class="indent-inputin">
+                          <button type="submit" class="btn btn-primary indent-btn">登录</button>
+                      </div>
+                      <div class="divnlink"><a href="#">找回密码</a></div>
+                  </div>
+              </div>
+              <div class="col-sm-4">
+                  <script type="text/javascript">
+                var state='register';
                 function swap_function(switcher){
-                    var d=document.getElementById('div_register').style.display;
-                    document.getElementById('div_register').style.display=document.getElementById('div_login').style.display;
-                    document.getElementById('div_login').style.display=d;
-                    d=switcher.firstChild.style.display;
-                    switcher.firstChild.style.display=switcher.lastChild.style.display;
-                    switcher.lastChild.style.display=d;
+                    if(state=='register'){
+                        document.getElementById('div_register').style.display='none';
+                        document.getElementById('div_login').style.display='block';
+                        switcher.firstChild.style.display='none';
+                        switcher.lastChild.style.display='block';
+                        state='login';
+                    }
+                    else{
+                        document.getElementById('div_register').style.display='block';
+                        document.getElementById('div_login').style.display='none';
+                        switcher.firstChild.style.display='block';
+                        switcher.lastChild.style.display='none';
+                        state='register';
+                    }
                 }
-            </script>
-          <div class="indent-login" style="cursor:pointer" onclick="swap_function(this);"><a>已经有了账户？点这里登录</a><a style="display:none">还没有账户？点这里注册</a></div>
-        </div>
-         <p class="clearfix"></p>
-        <div class="col-lg-12">
-            <div class="indent-OrderInfo">订单信息</div>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered indent-price">
-            <tr>
-              <th width="40" class="text-center">
-  <input type="checkbox" id="inlineCheckbox1" value="option1"> 
-</th>
-              <th>名称</th>
-              <th width="15%" class="text-center">价格</th>
-            </tr>
-            <tr>
-              <td class="text-center">  <input type="checkbox" id="inlineCheckbox1" value="option1"> </td>
-              <td><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%=@job_id%></span></td>
-              <td class="text-center fn18">123元</td>
-            </tr>
+                  </script>
+                  <div class="indent-login" style="cursor:pointer" onclick="swap_function(this);"><a>已经有了账户？点这里登录</a><a style="display:none">还没有账户？点这里注册</a></div>
+              </div>
+              <p class="clearfix"></p>
+              <div class="col-lg-12">
+                  <div class="indent-OrderInfo">订单信息</div>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered indent-price">
+                      <tr>
+                          <th width="40" class="text-center">
+                              <input type="checkbox" name="checkall" id="checkall" value="option1" > 
+                          </th>
+                          <th>名称</th>
+                          <th width="15%" class="text-center">价格</th>
+                      </tr>
+                      <% @job_ids.each do |job_id|%>
+                      <tr>
+                          <td class="text-center">  <input type="checkbox" id="job_id" name="job_id" value="option1"  parsley-required="true"  parsley-error-container="#job_id_validation"/></td>
+                          <td><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%=job_id%></span></td>
+                          <td class="text-center fn18">123元</td>
+                      </tr>
+                      <%end%>
+                  </table>
+                  <table class="indent-inputin"><tr><td><span id="job_id_validation_img"></span></td><td id="job_id_validation"></td></tr></table>
+                  <p class="text-right">共计：<span class="indent-total">123元</span></p>
+                  <script type="text/javascript">
+    function validate_and_submit(){
+        var result=new Array(),success=true;
+        var email=$('#email'),
+            password=$('#password'),
+            password_confirmation=$('#password_confirmation'),
+            name=$('#name'),
+            address=$('#address'),
+            phone=$('#phone'),
+            job_id=$('#job_id'),
+            count=$('#count');
         
-          </table>
-          <p class="text-right">共计：<span class="indent-total">123元</span></p>
-          <div class="text-center"> <button type="button" class="btn btn-primary btn-lg indent-btn2">确认订单</button></div>
+        var success1=email.parsley('validate');
+        var success2=password.parsley('validate');
+        var success3=password_confirmation.parsley('validate');
+        var success4=name.parsley('validate');
+        var success5=address.parsley('validate');
+        var success6=phone.parsley('validate');
+        var success7=job_id.parsley('validate');
+        if(!(success1&&success2&&success3&&success4&&success5&&success6&&success7))return;
+        
+        
+        result.push(['email',email.val()]);
+        result.push(['password',password.val()]);
+        result.push(['password_confirmation',password_confirmation.val()]);
+        result.push(['name',name.val()]);
+        result.push(['address',address.val()]);
+        result.push(['phone',phone.val()]);
+        result.push(['job_id',job_id.val()]);
+        result.push(['count',1]);
+        console.log(result);
+    }
+                  </script>
+                  <div class="text-center"> <button type="button" class="btn btn-primary btn-lg indent-btn2" onclick="validate_and_submit()">确认订单</button></div>
+              </div>
+          </form>
+          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 <script type="text/javascript">
     $('form').parsley({ successClass: '', errorClass: 'indent-inputred' });
-    $( 'form' ).parsley( 'addListener', {
+    $('form').parsley( 'addListener', {
     onFieldSuccess: function ( elem ) {
-        elem.parent().next().children().html('<img src="/images/numlist123-18.jpg"  />');
+        if(elem.attr('type')!='checkbox')
+            elem.parent().next().children().html('<img src="/images/numlist123-18.jpg"  />');
+        else
+            $('#job_id_validation_img').html('<img src="/images/numlist123-18.jpg"  />');
         return true;
     },
     onFieldError: function ( elem ) {
-        elem.parent().next().children().html('<img src="/images/numlist123-19.jpg"  />');
+        if(elem.attr('type')!='checkbox')
+            elem.parent().next().children().html('<img src="/images/numlist123-19.jpg"  />');
+        else
+            $('#job_id_validation_img').html('<img src="/images/numlist123-19.jpg"  />');
         return false;
     }
 } );
