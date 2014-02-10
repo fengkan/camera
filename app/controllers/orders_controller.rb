@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+  	puts "============"
+    @orders = current_user.orders
 
     respond_to do |format|
       format.html # index.html.erb

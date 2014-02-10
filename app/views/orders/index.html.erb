@@ -12,30 +12,19 @@
    <th class="text-center">创建时间</th>
     <th class="text-center">快递号</th>
   </tr>
-         
-<script type="text/javascript">var root=window.location.href.split('/')[2],protocol=window.location.href.split('/')[0];</script>
 <% @orders.each do |order| %>
   <tr>
     <td><img src="/images/numlist123-20.jpg" /></td>
-    <td onclick="window.location.href=protocol+'//'+root+'/orders/'+<%=order.id%>"><%= order.id %></td>
+    <td><%= link_to order.id, order %></td>
     <td><%= order.shipment.address %></td>
-      <td><%=
-        case order.status
-            when 'new'
-            '<span class="orderlist-state4"><a href="#">去付款</a></span><p class="margin-top5"><a href="#" style="color:#999;">取消订单</a></p>'.html_safe
-            when 'pending'
-            '<span class="orderlist-state1">等待制作</span>'.html_safe
-            when 'making'
-            '<span class="orderlist-state">制作中...</span>'.html_safe
-            when 'delivering'
-            '<span class="orderlist-state2">配送中</span>'.html_safe
-            when 'received'
-            '<span class="orderlist-state3">已签收</span>'.html_safe
-            else
-            '<span class="orderlist-state"></span>'.html_safe
-        end
-        %></td>
-    <td><%= order.created_at %></td>
+      <td><% if order.status == 'new' %>
+          <%= '<span class="orderlist-state4"><a href="#">去付款</a></span><p class="margin-top5"><a href="#" style="color:#999;">取消订单</a></p>'.html_safe %>
+            
+          <% else %>
+          	<%= '<span class="orderlist-state1">等待制作</span>'.html_safe %>
+        	<% end %>
+        </td>
+    <td><%= beautify_time(order.created_at) %></td>
     <td><%= order.logistics %></td>
   </tr>
 <% end %>

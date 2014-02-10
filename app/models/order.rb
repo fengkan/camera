@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class Order < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :shipment
@@ -14,6 +16,19 @@ class Order < ActiveRecord::Base
   def gen_md5
   	self.md5 = Digest::MD5.hexdigest(self.id)
   end
+  
+  def readable_status
+  	case status
+		when 'pending'
+			return "等待制作"
+		when 'making'
+			return "制作中..."
+		when 'delivering'
+			return "配送中"
+		when 'received'
+			return "已签收"
+		end
+	end
 
 
 end
