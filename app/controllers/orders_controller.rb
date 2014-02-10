@@ -83,7 +83,32 @@ class OrdersController < ApplicationController
   end
     
   def confirm
-        @job_id=params[:job_id]
+    if !user_signed_in?
+      user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
+      begin
+        user.save!
+      rescue
+        # TODO
+        # redirect_to orders#place
+        redirect_to "/"
+      else
+        sign_in(:user, user)
+      end
+    end
+
+    @order = current_user.orders.build(:status => "new")
+    order_item = @order.order_items.build(:job_id => params[:job_id], :job_amount => params[:count])
+
+    if !params[:name].blank?
+      shipment = current_user.shipments.build(:name => params[:name], :address => params[:address], :phone => params[:phone])
+      shipment.save
+    else
+      shipment = Shipment.find_by_id_and_user_id(params[:id], current_user.id)
+    end
+
+    @order.shipment_id = shipment.id
+    @order.save
+
 	end
     
 	def pay
