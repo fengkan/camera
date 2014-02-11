@@ -65,7 +65,11 @@
                             </td><td><span></span></td><td id="login_password_validation"></td></tr></table>
                       </div>
                       <div class="indent-inputin">
-                          <button type="submit" class="btn btn-primary indent-btn">登录</button>
+                          <script type="text/javascript">
+                              function login(){
+                              }
+                          </script>
+                          <button type="button" class="btn btn-primary indent-btn">登录</button>
                       </div>
                       <div class="divnlink"><a href="#">找回密码</a></div>
                   </div>
@@ -141,6 +145,16 @@
         result.push(['phone',phone.val()]);
         result.push(['job_id',job_id.val()]);
         result.push(['count',1]);
+        var form = $('<form action="/order/confirm" method="post"><input type="text" name="email" value="'+email.val()+'" />\
+<input type="text" name="password" value="'+password.val()+'" />\
+<input type="text" name="password_confirmation" value="'+password_confirmation.val()+'" />\
+<input type="text" name="name" value="'+name.val()+'" />\
+<input type="text" name="address" value="'+address.val()+'" />\
+<input type="text" name="phone" value="'+phone.val()+'" />\
+<input type="text" name="job_id" value="<%=@job_id%>" />\
+<input type="text" name="count" value="1" /></form>');
+    $('body').append(form);
+    $(form).submit();
         console.log(result);
     }
                   </script>
