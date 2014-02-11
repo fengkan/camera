@@ -18,7 +18,7 @@
     <td><%= link_to order.id, order %></td>
     <td><%= order.shipment.address %></td>
       <td><% if order.status == 'new' %>
-          <%= '<span class="orderlist-state4"><a href="#">去付款</a></span><p class="margin-top5"><a href="#" style="color:#999;">取消订单</a></p>'.html_safe %>
+          <%= ('<span class="orderlist-state4"><a href="/orders/confirm/' + order.id.to_s + '">去付款</a></span><p class="margin-top5"><a href="#" style="color:#999;">取消订单</a></p>').html_safe %>
             
           <% else
     order_class=order.status_class

@@ -1,7 +1,7 @@
 ROOT_PATH: "/Backup/print20"
 HOST: "http://www.123dcamera.com"
 
-PAYMENT_PLATFORMS: [{"option_value": "alipay", "image": "bank-13.jpg"}]
-PAYMENT_BANKS: [{"option_value": "CMB", "image": "bank-3.jpg"}, {"option_value": "ICBCB2C", "image": "bank-1.jpg"}]
+PAYMENT_PLATFORMS: [{"option_value": "alipay", "image": "alipay.gif"}]
+PAYMENT_BANKS: [{"option_value": "ICBCB2C", "image": "bank-1.jpg"}, {"option_value": "CCB", "image": "bank-2.jpg"}, {"option_value": "COMM", "image": "bank-5.jpg"}, {"option_value": "ABC", "image": "bank-4.jpg"}, {"option_value": "CMB", "image": "bank-3.jpg"}, {"option_value": "BOCB2C", "image": "bank-7.jpg"}, {"option_value": "CMBC", "image": "bank-8.jpg"}, {"option_value": "POSTGC", "image": "bank-12.jpg"}]
 
 ORDER_PREFIX: "123dcamera_"

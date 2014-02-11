@@ -849,3 +849,24 @@ body {
 .modal-content {
     border-radius: 0px;
 }
+.modal-body {
+	line-height: 30px;
+}
+.modal-footer {
+	margin-top:0px;
+}
+.indent-btn3 {
+	background: #78badd;
+	border: 0;
+	border-radius: 0;
+	height: 40px;
+}
+.indent-btn4 {
+	background: #de7778;
+	border: 0;
+	border-radius: 0;
+	height: 40px;
+	font-size: 14px;
+	margin-left:20px;
+	
+}

@@ -77,20 +77,20 @@ $(document).ready(function() {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <div class="fn18">请你在新打开的网银或第三方支付页面上完成付款</div>
+        <div class="fn18">请在新打开的支付页面上完成付款</div>
       </div>
       <div class="modal-body">
 
-      <div class="password-div">重置密码邮件已经发送到：tale@mail.com
-<br />
-请查收邮件修改密码</div>
+      <div>如果您当前的浏览器无法付款，你可以换用其他浏览器，打开以下连接
+<br /><% pay_link = Settings.HOST + "/orders/confirm/#{@order.id}" %>
+<a href='<%= pay_link %>' target="_blank"><%= pay_link %></a></div>
 
       </div>
 
 
       <div class="modal-footer">
-      <button class="btn btn-primary indent-btn" type="submit">重新选择支付方式</button>
-      <a href="/orders/success/<%= @order.id %>"><button type="button" class="btn btn-primary indent-btn2">支付成功</button></a>
+      <button class="btn btn-primary indent-btn3" data-dismiss="modal" aria-hidden="true">重新选择</button>
+      <a href="/orders/success/<%= @order.id %>"><button type="button" class="btn btn-primary indent-btn4">支付成功</button></a>
 
       </div>
     </div><!-- /.modal-content -->
