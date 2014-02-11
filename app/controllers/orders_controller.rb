@@ -121,7 +121,7 @@ class OrdersController < ApplicationController
 		id = params[:order_id]
 		order = Order.find_by_md5_and_status(id, "new")
 		
-		callback = Settings.HOST + "/orders/close/<%= @order.md5 %>"
+		callback = Settings.HOST + "/orders/close/#{@order.md5}"
 
     m = params["optionsRadios"]
     m = "" if m == 'alipay'

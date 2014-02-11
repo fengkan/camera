@@ -15,3 +15,4 @@
 /tmp
 
 config/sensitive_settings.yml
+config/database.yml
