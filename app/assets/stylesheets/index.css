@@ -424,6 +424,7 @@ body {
 	padding-top: 20px;
 }
 .indent-price th {
+	border-top: 2px solid #dbe1e4 !important;
 	border-bottom: 2px solid #dbe1e4 !important;
 	background: #f9f9f9;
 }
@@ -868,5 +869,7 @@ body {
 	height: 40px;
 	font-size: 14px;
 	margin-left:20px;
-	
+}
+.detail-content p {
+	line-height: 30px;
 }

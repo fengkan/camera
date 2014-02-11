@@ -29,7 +29,7 @@ $(document).ready(function() {
 			<form id="confirm_credit" target="_blank" method="post" action="/orders/pay" accept-charset="UTF-8">
       <input type="hidden" name="order_id" id="order_id" value="<%= @order.md5 %>">
       <div class="col-lg-12 padding-top20">
-        <div class="payment-div">您需要支付<span>123</span>元，请选择支付方式</div>
+        <div class="payment-div">您需要支付<span> <%= @order.total_price %> </span>元，请选择支付方式</div>
         <div class="fn18 padding-top20">支付平台</div>
         <div class="payment-bank">
           <ul>

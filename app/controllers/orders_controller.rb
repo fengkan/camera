@@ -14,7 +14,11 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find_by_md5(params[:id])
+    
+    if @order.nil? and user_signed_in?
+    	@order = Order.find_by_id_and_user_id(params[:id], current_user.id)
+  	end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -86,6 +90,10 @@ class OrdersController < ApplicationController
   	
   	if !params[:id].blank?
   		@order = Order.find_by_md5(params[:id])
+  		if @order.status != "new"
+  			redirect_to :action => :show, :id => params[:id]
+			end
+  			
 		else
   	
   	
@@ -150,12 +158,12 @@ class OrdersController < ApplicationController
 
   def close
     order_id = params[:id]
-    order = Order.find_by_md5(order_id)
-    if order.nil?
+    @order = Order.find_by_md5(order_id)
+    if @order.nil?
     	render :action => :failed
-  	elsif order.status == "new"
-  		redirect_to :action => :confirm, :id => order_id
-		elsif order.status != "paid"
+  	elsif @order.status == "new"
+  		redirect_to :action => :confirm, :id => @order_id
+		elsif @order.status != "paid"
     	render :action => :failed
   	end
   end

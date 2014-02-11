@@ -14,9 +14,11 @@
       </div>
       <div class="payment-pay">
       <div class="div-text"><img src="/images/numlist123-30.jpg" />支付成功！</div>
-      <div>您的订单20cm 人偶预计2014.5.6日送达<br />
-
-3s过后返回<a href="#">订单列表</a></div>
+      <div class="detail-content">
+      	<p>您可以在以下网址了解发货情况</p>
+      	<p><% show_link = Settings.HOST + "/orders/#{@order.md5}" %>
+				<a href='<%= show_link %>'><%= show_link %></a></p>
+				</div>
       </div>
     </div>
   </div>
