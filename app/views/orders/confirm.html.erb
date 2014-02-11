@@ -1,22 +1,15 @@
 <% content_for :head do %>
 <script>
-
 $(document).ready(function() {
-
-    $('#summit_btn').click(function() {
-      $('#confirm_credit').submit();
-
-    });
-
+  $('#summit_btn').click(function() {
+    $('#confirm_credit').submit();
+  });
   $('input:radio').click(
       function(){
         $('#summit_btn').attr( 'disabled', false );
       }
-  );          
-
-
+  );
 });
-
 </script>
 <% end %>
 <div class="padding-top68">
@@ -33,7 +26,8 @@ $(document).ready(function() {
           <p>支付完成，等待收货</p>
         </div>
       </div>
-<form id="confirm_credit" target="_blank" method="post" action="/orders/pay" accept-charset="UTF-8">
+			<form id="confirm_credit" target="_blank" method="post" action="/orders/pay" accept-charset="UTF-8">
+      <input type="hidden" name="order_id" id="order_id" value="<%= @order.md5 %>">
       <div class="col-lg-12 padding-top20">
         <div class="payment-div">您需要支付<span>123</span>元，请选择支付方式</div>
         <div class="fn18 padding-top20">支付平台</div>
@@ -46,14 +40,12 @@ $(document).ready(function() {
                 <img src="/images/<%= p.image %>" /> </label>
             </li>
           <% end %>
-         
-            </ul>
-            <div class="clearfix"></div>
-            </div>
-        <div class="fn18">网银支付</div>
-        <div class="payment-bank">
+	        </ul>
+          <div class="clearfix"></div>
+        </div>
+	      <div class="fn18">网银支付</div>
+	      <div class="payment-bank">
           <ul>
-
           <% for p in Settings.PAYMENT_BANKS%>
             <li>
               <label>
@@ -63,15 +55,13 @@ $(document).ready(function() {
           <% end %>
           </ul>
           <div class="clearfix"></div>
-        </div>
-         <div class="text-center"> <button class="btn btn-primary btn-lg indent-btn2" data-toggle="modal" data-target="#myModal" id="summit_btn" disabled="true">去支付~</button></div>
+				</div>
+				<div class="text-center"> <button class="btn btn-primary btn-lg indent-btn2" data-toggle="modal" data-target="#myModal" id="summit_btn" disabled="true">去支付~</button></div>
       </div>
       </form>
     </div>
   </div>
 </div>
-
-<!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -81,18 +71,15 @@ $(document).ready(function() {
       </div>
       <div class="modal-body">
 
-      <div>如果您当前的浏览器无法付款，你可以换用其他浏览器，打开以下连接
-<br /><% pay_link = Settings.HOST + "/orders/confirm/#{@order.id}" %>
+	      <div>如果您当前的浏览器无法付款，你可以换用其他浏览器，打开以下连接
+<br /><% pay_link = Settings.HOST + "/orders/confirm/#{@order.md5}" %>
 <a href='<%= pay_link %>' target="_blank"><%= pay_link %></a></div>
 
       </div>
-
-
       <div class="modal-footer">
       <button class="btn btn-primary indent-btn3" data-dismiss="modal" aria-hidden="true">重新选择</button>
-      <a href="/orders/success/<%= @order.id %>"><button type="button" class="btn btn-primary indent-btn4">支付成功</button></a>
-
+      <a href="/orders/close/<%= @order.md5 %>"><button type="button" class="btn btn-primary indent-btn4">支付成功</button></a>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>

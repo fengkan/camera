@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-	before_filter :authenticate_user!, :only => ['index', 'pay', 'success']
+	before_filter :authenticate_user!, :only => ['index']
   # GET /orders
   # GET /orders.json
   def index
@@ -85,7 +85,7 @@ class OrdersController < ApplicationController
   def confirm
   	
   	if !params[:id].blank?
-  		@order = Order.find(params[:id])
+  		@order = Order.find_by_md5(params[:id])
 		else
   	
   	
@@ -118,12 +118,14 @@ class OrdersController < ApplicationController
 	end
     
 	def pay
-		id = params[:id]
+		id = params[:order_id]
+		order = Order.find_by_md5_and_status(id, "new")
+		
+		callback = Settings.HOST + "/orders/close/<%= @order.md5 %>"
+
     m = params["optionsRadios"]
-
     m = "" if m == 'alipay'
-    @url = WebAlipayUtil.construct_auth_and_excute_url(id, 1, m, "")
-
+    @url = WebAlipayUtil.construct_auth_and_excute_url(order.id, order.total_price, m, callback)
 		redirect_to @url
 	end
 	
@@ -146,9 +148,16 @@ class OrdersController < ApplicationController
     render :nothing => true
 	end
 
-  def success
+  def close
     order_id = params[:id]
-    order = Order.find_by_id_and_status(order_id, "paid")
+    order = Order.find_by_md5(order_id)
+    if order.nil?
+    	render :action => :failed
+  	elsif order.status == "new"
+  		redirect_to :action => :confirm, :id => order_id
+		elsif order.status != "paid"
+    	render :action => :failed
+  	end
   end
 
 

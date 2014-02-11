@@ -3,7 +3,7 @@ Camera::Application.routes.draw do
   resources :orders do
 	  collection do
       # for convenience of development
-	    get :pay, :confirm, :success, :place
+	    get :confirm, :close, :place
       post :pay
 	    get :ali_callback
 	  end 
@@ -12,7 +12,7 @@ Camera::Application.routes.draw do
 	
 	
   devise_for :users
-    match 'orders/success/:id' => 'orders#success'
+    match 'orders/close/:id' => 'orders#close'
 
     match 'order/confirm' => 'orders#confirm'
     match 'orders/confirm/:id' => 'orders#confirm'
