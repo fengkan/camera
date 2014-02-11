@@ -3,7 +3,7 @@
 class WebAlipayUtil
   WEB_NOTIFY_URL =  "#{Settings.HOST}/orders/ali_callback"
 
-  def WebAlipayUtil.construct_auth_and_excute_url(order_id, total_fee, bank, callback)
+  def WebAlipayUtil.construct_auth_and_excute_url(order_id, total_fee, bank, callback = "")
     params = {}
     params["service"] = "create_direct_pay_by_user"
     params["partner"] = SEN_SETTINGS["ALI_ID"]
