@@ -13,7 +13,7 @@ class WebAlipayUtil
 		params['defaultbank'] = bank if !bank.blank?
 
     params["out_trade_no"] = Settings.ORDER_PREFIX + order_id.to_s
-		params["subject"] = "123DCamera"
+		params["subject"] = "123D相机"
 		params["payment_type"] = "1"
 		params["seller_id"] = SEN_SETTINGS["ALI_ID"]
     params["total_fee"] = total_fee.to_s

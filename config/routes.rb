@@ -6,6 +6,7 @@ Camera::Application.routes.draw do
 	    get :confirm, :close, :place
       post :pay
 	    get :ali_callback
+	    post :ali_callback
 	  end 
   
 	end
