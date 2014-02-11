@@ -31,20 +31,20 @@ class Order < ActiveRecord::Base
 		end
 	end
     
-    def status_class
-        case status
-            when 'new'
-            return 'orderlist-state4'
-            when 'pending'
-            return 'orderlist-state1'
-            when 'making'
-            return 'orderlist-state'
-            when 'delivering'
-            return 'orderlist-state2'
-            when 'received'
-            return 'orderlist-state3'
-        end
-    end
+	def status_class
+		case status
+		when 'new'
+			return 'orderlist-state4'
+		when 'pending'
+			return 'orderlist-state1'
+		when 'making'
+			return 'orderlist-state'
+		when 'delivering'
+			return 'orderlist-state2'
+		when 'received'
+			return 'orderlist-state3'
+		end
+	end
     
   def total_price
     sum = 0

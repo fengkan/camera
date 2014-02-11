@@ -83,20 +83,19 @@ class OrdersController < ApplicationController
   end
     
   def place
-      @job_id=params[:job_id]
+    @job_id = params[:job_id]
+    @job_style = 0
   end
     
   def confirm
+  	job_style = 0
   	
   	if !params[:id].blank?
   		@order = Order.find_by_md5(params[:id])
   		if @order.status != "new"
   			redirect_to :action => :show, :id => params[:id]
 			end
-  			
 		else
-  	
-  	
 	    if !user_signed_in?
 	      user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
 	      begin
@@ -111,7 +110,7 @@ class OrdersController < ApplicationController
 	    end
 	
 	    @order = current_user.orders.build(:status => "new")
-	    order_item = @order.order_items.build(:job_id => params[:job_id], :job_amount => params[:count])
+	    order_item = @order.order_items.build(:job_id => params[:job_id], :job_amount => params[:count], :job_style => job_style, :price => params[:count].to_i * Settings.PRODUCTS[job_style]["product_price"].to_f)
 	
 	    if !params[:name].blank?
 	      shipment = current_user.shipments.build(:name => params[:name], :address => params[:address], :phone => params[:phone])
@@ -133,7 +132,7 @@ class OrdersController < ApplicationController
 
     m = params["optionsRadios"]
     m = "" if m == 'alipay'
-    @url = WebAlipayUtil.construct_auth_and_excute_url(order.id, order.total_price, m)
+    @url = WebAlipayUtil.construct_auth_and_excute_url(Settings.PRODUCTS[0]["product_name"], order.id, order.total_price, m)
 		redirect_to @url
 	end
 	

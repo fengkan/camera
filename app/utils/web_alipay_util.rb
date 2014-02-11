@@ -3,7 +3,7 @@
 class WebAlipayUtil
   WEB_NOTIFY_URL =  "#{Settings.HOST}/orders/ali_callback"
 
-  def WebAlipayUtil.construct_auth_and_excute_url(order_id, total_fee, bank, callback = "")
+  def WebAlipayUtil.construct_auth_and_excute_url(product_name, order_id, total_fee, bank, callback = "")
     params = {}
     params["service"] = "create_direct_pay_by_user"
     params["partner"] = SEN_SETTINGS["ALI_ID"]
@@ -13,7 +13,7 @@ class WebAlipayUtil
 		params['defaultbank'] = bank if !bank.blank?
 
     params["out_trade_no"] = Settings.ORDER_PREFIX + order_id.to_s
-		params["subject"] = "123D相机"
+		params["subject"] = product_name
 		params["payment_type"] = "1"
 		params["seller_id"] = SEN_SETTINGS["ALI_ID"]
     params["total_fee"] = total_fee.to_s

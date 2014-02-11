@@ -139,12 +139,12 @@
                       </tr>
                       <tr>
                           <td class="text-center">  <input type="checkbox" id="job_id" name="job_id" value="<%=@job_id%>"  parsley-required="true"  parsley-error-container="#job_id_validation"/></td>
-                          <td><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%=@job_id%></span></td>
-                          <td class="text-center fn18">123元</td>
+                          <td><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%= Settings.PRODUCTS[@job_style]["product_name"] %></span></td>
+                          <td class="text-center fn18"><%= Settings.PRODUCTS[@job_style]["product_price"] %> 元</td>
                       </tr>
                   </table>
                   <table class="indent-inputin"><tr><td><span id="job_id_validation_img"></span></td><td id="job_id_validation"></td></tr></table>
-                  <p class="text-right">共计：<span class="indent-total">123元</span></p>
+                  <p class="text-right">共计：<span class="indent-total"> 123 </span>元</p>
                   <div class="text-center"> <button type="submit" class="btn btn-primary btn-lg indent-btn2">确认订单</button>
                   </div>
               </div>

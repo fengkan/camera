@@ -5,3 +5,6 @@ PAYMENT_PLATFORMS: [{"option_value": "alipay", "image": "alipay.gif"}]
 PAYMENT_BANKS: [{"option_value": "ICBCB2C", "image": "bank-1.jpg"}, {"option_value": "CCB", "image": "bank-2.jpg"}, {"option_value": "COMM", "image": "bank-5.jpg"}, {"option_value": "ABC", "image": "bank-4.jpg"}, {"option_value": "CMB", "image": "bank-3.jpg"}, {"option_value": "BOCB2C", "image": "bank-7.jpg"}, {"option_value": "CMBC", "image": "bank-8.jpg"}, {"option_value": "POSTGC", "image": "bank-12.jpg"}]
 
 ORDER_PREFIX: "123dcamera_"
+
+PRODUCTS: [{"product_style": 0, "product_name": "5cm Ä´Ö¸ÈËÅ¼", "product_price": 1}]
+
