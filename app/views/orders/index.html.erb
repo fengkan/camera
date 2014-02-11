@@ -20,8 +20,11 @@
       <td><% if order.status == 'new' %>
           <%= '<span class="orderlist-state4"><a href="#">去付款</a></span><p class="margin-top5"><a href="#" style="color:#999;">取消订单</a></p>'.html_safe %>
             
-          <% else %>
-          	<%= '<span class="orderlist-state1">等待制作</span>'.html_safe %>
+          <% else
+    order_class=order.status_class
+    order_status=order.readable_status
+    %>
+          	<span class="<%=order_class%>"><%=order_status%></span>
         	<% end %>
         </td>
     <td><%= beautify_time(order.created_at) %></td>
