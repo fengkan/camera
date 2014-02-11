@@ -46,7 +46,7 @@
                   });
               }
           </script>
-        <li class="li-login"><a href="#"><%=current_user.email%><input name="" type="button"  value="退出" class="user-quick" onclick="logout()"/></a></li>
+        <li class="li-login"><div><a href="#"><%=current_user.email%></a><input name="" type="button"  value="退出" class="user-quick" onclick="logout()"/></div></li>
           <%else%>
         <li class="li-login"><a href="#">登录</a><a href="#">注册</a></li>
                 <%end%>

@@ -58,9 +58,13 @@ body {
 .navbar-fixednav .li-login a {
 	margin: 0 5px;
 	float: left;
-	padding-left: 8px;
-	padding-right: 8px;
-	padding-top: 16px
+	padding-top: 16px;
+    max-width:131px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.navbar-fixednav .li-login input{
+    padding-top:16px;
 }
 .user-quick {
 	background: none;
