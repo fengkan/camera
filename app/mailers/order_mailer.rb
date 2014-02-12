@@ -1,9 +1,9 @@
 class OrderMailer < ActionMailer::Base
   default from: "info@123dcamera.com"
 
-  def registration_confirmation(user)
-    @user = user
-    mail(:to => "<#{user.email}>", :subject => "Registered")
+  def paid_notification(order)
+    @order = order
+    mail(:to => "<#{order.user.email}>", :subject => "Registered")
   end
   
   
