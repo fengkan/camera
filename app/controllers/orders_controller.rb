@@ -156,6 +156,8 @@ class OrdersController < ApplicationController
     order = Order.find(order_id)
     order.status = "paid"
     order.save
+    
+    Resque.enqueue(OrderNotification, "paid_notification", order.id)
     render :nothing => true
 	end
 
