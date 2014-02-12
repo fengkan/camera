@@ -2,7 +2,18 @@
 <%= "登入 - " + Settings.TAGLINE %>
 <% end %>
 <%content_for :head do%>
-  <%= javascript_include_tag "parsley.min","parsley-messages.zh_cn"%>
+<%= javascript_include_tag "parsley.min","parsley-messages.zh_cn"%>
+<script>
+$(document).ready(function() {
+  $('#form_login').parsley({ successClass: '', errorClass: 'indent-inputred' });
+  $('#form_login').parsley( 'addListener', listeners);
+});
+</script>
+<style type="text/css">
+    ul, li{
+        display:inline;
+    }
+</style>
 <%end%>
 <div class="padding-top68">
   <div class="container">
@@ -10,15 +21,19 @@
       <div class="padding-15">
         <div class="col-sm-8">
           <div class="fn18">登入</div>
-          <form id="new_user" class="simple_form new_user" parsley-validate method="post" action="/users/sign_in" accept-charset="UTF-8">
+          <form id="form_login" action="/users/sign_in" accept-charset="UTF-8" method="post">
             <div class="indent-inputin">
-              <input type="text" value="" size="50" name="user[email]" id="user_email" class="string email optional indent-input" autofocus="autofocus" placeholder="tale@mail.com" required parsley-type="email" parsley-trigger="change" parsley-error-container="#register_email_validation">
+              <input type="text" class="indent-input" id="login_email" name="user[email]"  placeholder="tale@mail.com" parsley-required="true" parsley-type="email" parsley-trigger="change" parsley-error-container="#login_email_validation"/>
+              <span></span>
+              <span id="login_email_validation"></span>
             </div>
             <div class="indent-inputin">
-              <input id="user_password" class="password optional indent-input" type="password" size="50" name="user[password]">
+              <input type="password" class="indent-input" id="login_password" name="user[password]" placeholder="请输入密码" parsley-required="true" parsley-trigger="change" parsley-error-container="#login_password_validation" parsley-required-message="别忘了密码"/>
+              <span></span>
+              <span id="login_password_validation"></span>
             </div>
             <div class="indent-inputin">
-              <input class="btn btn btn-primary indent-btn" type="submit" value="登入" name="commit">
+              <input class="btn btn-primary indent-btn" type="submit" value="登入" name="commit">
             </div>
           </form>
           <div class="divnlink"><a href="#">找回密码</a><a href="#"> 注册新账户</a></div>
@@ -27,3 +42,15 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+var listeners={
+  onFieldSuccess: function ( elem ) {
+    $(elem).next().html('<img src="/images/numlist123-18.jpg"/>');
+    return true;
+  },
+  onFieldError: function ( elem ) {
+    $(elem).next().html('<img src="/images/numlist123-19.jpg"/>');
+    return false;
+  }
+};
+</script>
