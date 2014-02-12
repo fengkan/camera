@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><%= render_title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <%= stylesheet_link_tag "bootstrap.min", "index" %>
-    <%= javascript_include_tag "jquery", "bootstrap", "holder" %>
-    <%= csrf_meta_tags %>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title><%= !yield(:title).blank? ? yield(:title) : Settings.TAGLINE %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <%= stylesheet_link_tag "bootstrap.min", "index" %>
+  <%= javascript_include_tag "jquery", "bootstrap", "holder" %>
+  <%= csrf_meta_tags %>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
     <%= javascript_include_tag "html5shiv", "respond.min" %>
 <![endif]-->
-
-<!-- Custom styles for this template -->
 <%= yield :head %>
-
-
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top navbar-fixednav">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-      <a class="navbar-brand hidden-sm" href="/"><img src="/images/numlist123-11.jpg" /></a> </div>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      	<span class="icon-bar"></span>
+      	<span class="icon-bar"></span>
+      	<span class="icon-bar"></span>
+    	</button>
+      <a class="navbar-brand hidden-sm" href="/"><img src="/images/numlist123-11.jpg" /></a>
+    </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">首页</a></li>
-        <li><a href="/faq" target="_blank">FAQ</a></li>
-        <li><a href="/job/show" target="_blank"> 查看</a></li>
+        <li><a href="/job/show"> 查看</a></li>
         <li><a href="/orders">订单</a></li>
+        <li><a href="/faq">FAQ</a></li>
         <li><a href="/contact_us">联系我们</a></li>
-          <% if signed_in?%>
-          <script type="text/javascript">
-              function logout(){
-                  $.ajax({
-                      url: '/users/sign_out',
-                      type: 'DELETE',
-                      success: function(result) {
-                          var root=window.location.href.split('/')[2],protocol=window.location.href.split('/')[0];
-                          window.location.href=protocol+'//'+root;
-                      }
-                  });
+        <% if signed_in? %>
+        <script type="text/javascript">
+					function logout(){
+            $.ajax({
+              url: '/users/sign_out',
+              type: 'DELETE',
+              success: function(result) {
+                var root=window.location.href.split('/')[2],protocol=window.location.href.split('/')[0];
+                window.location.href=protocol+'//'+root;
               }
-          </script>
+            });
+          }
+        </script>
         <li class="li-login"><div><a href="#"><%=current_user.email%></a><input name="" type="button"  value="退出" class="user-quick" onclick="logout()"/></div></li>
-          <%else%>
-        <li class="li-login"><a href="#">登录</a><a href="#">注册</a></li>
-                <%end%>
+        <% else %>
+        <li><a href="/users/sign_in">登入</a></li>
+        <% end %>
       </ul>
     </div>
   </div>
 </div>
 <%= yield %>
-
-<div class=" footer-bg">
-  <div class=" container">
+<div class="footer-bg">
+  <div class="container">
     <div class="col-sm-5"><a href="#">关于我们</a>|<a href="contact_us">联系我们</a>|<a href="#">商务合作</a></div>
     <div class="col-sm-7 text-right">Copyright © 2013 3D Camera by Project MakerLover</div>
   </div>

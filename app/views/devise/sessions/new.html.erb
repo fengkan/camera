@@ -1,48 +1,29 @@
+<% content_for :title do %>
+<%= "登入 - " + Settings.TAGLINE %>
+<% end %>
 <%content_for :head do%>
-    <%= javascript_include_tag "parsley.min","parsley-messages.zh_cn"%>
+  <%= javascript_include_tag "parsley.min","parsley-messages.zh_cn"%>
 <%end%>
-
 <div class="padding-top68">
   <div class="container">
     <div class="indent-warp login-warp">
-
       <div class="padding-15">
         <div class="col-sm-8">
-
-  <div class="fn18">账户登录</div>
-
-
-  <form id="new_user" class="simple_form new_user" parsley-validate method="post" action="/users/sign_in" accept-charset="UTF-8">
-
-
-    <div class="form-inputs">
-    <div class="indent-inputin">
-
-    <input type="text" value="" size="50" name="user[email]" id="user_email" class="string email optional indent-input" autofocus="autofocus" placeholder="tale@mail.com" required parsley-type="email" parsley-trigger="change" parsley-error-container="#register_email_validation">
-
-
-
-    </div><div class="indent-inputin">
- 
-    <input id="user_password" class="password optional indent-input" type="password" size="50" name="user[password]">
-
-
-    </div>
-  </div>
-
-    <div class="indent-inputin">
-
-    <input class="btn btn btn-primary indent-btn" type="submit" value="登入" name="commit">
-  </div>
-
- </form>
-
-  <div class="divnlink"><a href="#">找回密码</a> <a href="#"> 注册新账户</a> </div>
- 	   </div>
-
+          <div class="fn18">登入</div>
+          <form id="new_user" class="simple_form new_user" parsley-validate method="post" action="/users/sign_in" accept-charset="UTF-8">
+            <div class="indent-inputin">
+              <input type="text" value="" size="50" name="user[email]" id="user_email" class="string email optional indent-input" autofocus="autofocus" placeholder="tale@mail.com" required parsley-type="email" parsley-trigger="change" parsley-error-container="#register_email_validation">
+            </div>
+            <div class="indent-inputin">
+              <input id="user_password" class="password optional indent-input" type="password" size="50" name="user[password]">
+            </div>
+            <div class="indent-inputin">
+              <input class="btn btn btn-primary indent-btn" type="submit" value="登入" name="commit">
+            </div>
+          </form>
+          <div class="divnlink"><a href="#">找回密码</a><a href="#"> 注册新账户</a></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-

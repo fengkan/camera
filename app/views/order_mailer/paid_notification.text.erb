@@ -1,8 +1,9 @@
 
+嗨，
 
-<%= @order.user.email %>,
+感谢您订购123D相机的5cm拇指人偶。
 
-Thank you for registering!
+我们将会在今后 7 天内完成人偶的制作，
+您可以在以下网址查看制作进度。
 
-Edit profile:
-
+<%= Settings.HOST + "/orders/#{@order.md5}" %>
