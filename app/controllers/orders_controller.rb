@@ -84,7 +84,11 @@ class OrdersController < ApplicationController
     
   def place
     @job_id = params[:job_id]
-    @job_style = 0
+    if Job.exists?(@job_id)
+      @job_style = 0
+    else
+      redirect_to '/job/show'
+    end
   end
     
   def confirm
