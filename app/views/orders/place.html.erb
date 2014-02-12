@@ -135,7 +135,7 @@
                           <th width="15%" class="text-center">价格</th>
                       </tr>
                       <tr>
-                          <td><input type="text" style="display:none" id="job_id" name="job_id" value="<%=@job_id%>"  parsley-required="true"  parsley-error-container="#job_id_validation"/><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%= Settings.PRODUCTS[@job_style]["product_name"] %></span></td>
+                          <td><input type="hidden" id="job_id" name="job_id" value="<%=@job_id%>"/><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%= Settings.PRODUCTS[@job_style]["product_name"] %></span></td>
                           <td class="text-center fn18"><%= Settings.PRODUCTS[@job_style]["product_price"] %> 元</td>
                       </tr>
                   </table>
