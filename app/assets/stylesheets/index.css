@@ -394,10 +394,13 @@ body {
 .indent-inputin {
 	margin-top: 15px;
 	overflow: hidden;
+    display:table
 }
 .indent-inputin span {
 	margin-left: 5px;
 	font-size: 12px;
+    display:table-cell;
+    vertical-align:middle
 }
 .indent-inputin td ul{
     font-size: 12px;
