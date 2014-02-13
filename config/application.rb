@@ -63,6 +63,7 @@ module Camera
     config.assets.version = '1.0'
     
     config.action_controller.allow_forgery_protection = false
+    config.i18n.default_locale = 'zh-CN'
     
   end
 end

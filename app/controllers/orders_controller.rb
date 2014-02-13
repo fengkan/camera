@@ -167,7 +167,7 @@ class OrdersController < ApplicationController
     if @order.nil?
     	render :action => :failed
   	elsif @order.status == "new"
-  		redirect_to :action => :confirm, :id => @order_id
+  		redirect_to :action => :confirm, :id => order_id
 		elsif @order.status != "paid"
     	render :action => :failed
   	end
