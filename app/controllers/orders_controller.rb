@@ -16,8 +16,13 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find_by_md5(params[:id])
     
-    if @order.nil? and user_signed_in?
-    	@order = Order.find_by_id_and_user_id(params[:id], current_user.id)
+    if @order.nil?
+    	if user_signed_in?
+	    	@order = Order.find_by_id_and_user_id(params[:id], current_user.id)
+    	else
+    		store_location
+    		authenticate_user!
+  		end
   	end
 
     respond_to do |format|
