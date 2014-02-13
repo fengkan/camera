@@ -61,7 +61,6 @@
                         </td><td><span></span></td><td id="address_validation"></td></tr></table>
                     </div>
                   </div>
-                  <input type="text" name="count" value="1" style="display:none"/>
               </div>
               <div class="col-sm-4">
                   <script type="text/javascript">
@@ -117,15 +116,28 @@
                   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered indent-price">
                       <tr>
                           <th>名称</th>
+                          <th width="15%" class="text-center">&nbsp;</th>
                           <th width="15%" class="text-center">价格</th>
                       </tr>
                       <tr>
                           <td><input type="hidden" id="job_id" name="job_id" value="<%=@job_id%>"/><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%= Settings.PRODUCTS[@job_style]["product_name"] %></span></td>
+                        <td>
+                          <div class="alipay-divs">
+                            <span class="span-jian" onclick="var v;if((v=parseInt($('#count').val()))>0)$('#count').val(--v);updateTotal(v);"></span>
+                            <input id="count" name="count" type="text"  class="span-input" value="10"/>
+                            <span class="span-jia" onclick="var v;if((v=parseInt($('#count').val()))<10)$('#count').val(++v);updateTotal(v);"></span>
+                          </div>
+                        </td>
+                        <script type="text/javascript">
+                          function updateTotal(v){
+                            $('#total').html(' '+v*<%= Settings.PRODUCTS[@job_style]["product_price"] %>+' ');
+                          }
+                        </script>
                           <td class="text-center fn18"><%= Settings.PRODUCTS[@job_style]["product_price"] %> 元</td>
                       </tr>
                   </table>
                   <table class="indent-inputin"><tr><td><span id="job_id_validation_img"></span></td><td id="job_id_validation"></td></tr></table>
-                  <p class="text-right">共计：<span class="indent-total"> 123 </span>元</p>
+                  <p class="text-right">共计：<span id="total" class="indent-total"> <%= Settings.PRODUCTS[@job_style]["product_price"]*10 %> </span>元</p>
                   <div class="text-center"> <button type="submit" class="btn btn-primary btn-lg indent-btn2">确认订单</button>
                   </div>
               </div>

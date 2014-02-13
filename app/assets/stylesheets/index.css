@@ -893,7 +893,7 @@ body {
 	height:24px;
 }
 .alipay-divs .span-jia, .alipay-divs .span-jian {
-	background:url(../images/numlist123-34.jpg) no-repeat;
+	background:url(/images/numlist123-34.jpg) no-repeat;
 	width:32px;
 	height:24px;
 	cursor:pointer;
@@ -903,7 +903,7 @@ body {
 	line-height:24em;
 }
 .alipay-divs .span-jian {
-	background:url(../images/numlist123-35.jpg) no-repeat;
+	background:url(/images/numlist123-35.jpg) no-repeat;
 }
 .alipay-divs .span-input {
 	float:left;
