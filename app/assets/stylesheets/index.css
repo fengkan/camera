@@ -528,7 +528,7 @@ body {
 	border-bottom: 1px solid #ececec;
 	color: #6d7276;
 	padding-bottom: 10px;
-	padding-left: 20px;
+	padding-left: 15px;
 }
 .orderlist-state, .orderlist-state1, .orderlist-state2, .orderlist-state3, .orderlist-state4 {
 	background: #dee4e7;
@@ -934,25 +934,21 @@ body {
 	padding-right:10px;
 	vertical-align:middle;
 }
-.MessageNotify {
-	background:#fbe0e0 url(../images/numlist123-38.jpg) no-repeat 15px center;
+.notification {
 	height:30px;
-	border:1px solid #dd7878;
-	color:#dd7878;
-
-	padding:2px 0 2px 30px;
-	margin:0 30px;
-	
+	line-height: 24px;
+	padding:2px 0 2px 36px;
+	margin:10px 15px;
 }
-.MessageNotify2 {
-	background:#defadc url(../images/numlist123-39.jpg) no-repeat 15px center;
-	height:30px;
+.n_success {
+	background:#defadc url(../images/numlist123-37.jpg) no-repeat 15px center;
 	border:1px solid #34c429;
 	color:#34c429;
-
-	padding:2px 0 2px 30px;
-	margin:10px 30px;
-	
+}
+.n_failure {
+	background:#fbe0e0 url(../images/numlist123-38.jpg) no-repeat 15px center;
+	border:1px solid #dd7878;
+	color:#dd7878;
 }
 .navbar-inverse .navbar-nav > .disabled > a,
 .navbar-inverse .navbar-nav > .disabled > a:hover,
