@@ -20,23 +20,7 @@
               <div class="col-sm-8" id="div_login" style="display:none">
                   <div class="login-warp">
                       <div class="fn18">账户登录</div>
-                      <div class="indent-inputin">
-                        <table><tr><td>
-                            <input type="text" class="indent-input" id="login_email" name="user[email]"  placeholder="tale@mail.com" parsley-required="true" parsley-type="email" parsley-trigger="change" parsley-error-container="#login_email_validation"/>
-                            </td><td><span></span></td><td id="login_email_validation"></td></tr></table>
-                      </div>
-                      <div class="indent-inputin">
-                        <table><tr><td>
-                            <input type="password" class="indent-input" id="login_password" name="user[password]" placeholder="请输入密码" parsley-required="true" parsley-trigger="change" parsley-error-container="#login_password_validation" parsley-required-message="别忘了密码"/>
-                            </td><td><span></span></td><td id="login_password_validation"></td></tr></table>
-                      </div>
-                      <div class="indent-inputin">
-                          <script type="text/javascript">
-                              function login(){
-                              }
-                          </script>
-                          <button type="submit" class="btn btn-primary indent-btn">登录</button>
-                      </div>
+                    <%=render partial:"shared/login"%>
                       <div class="divnlink"><a href="#">找回密码</a></div>
                   </div>
               </div>

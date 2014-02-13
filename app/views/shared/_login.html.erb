@@ -1,0 +1,15 @@
+<form id="form_login" action="/users/sign_in" accept-charset="UTF-8" method="post">
+  <div class="indent-inputin">
+    <input type="text" class="indent-input" id="login_email" name="user[email]"  placeholder="tale@mail.com" parsley-required="true" parsley-type="email" parsley-trigger="change" parsley-error-container="#login_email_validation"/>
+    <span></span>
+    <span id="login_email_validation"></span>
+  </div>
+  <div class="indent-inputin">
+    <input type="password" class="indent-input" id="login_password" name="user[password]" placeholder="请输入密码" parsley-required="true" parsley-trigger="change" parsley-error-container="#login_password_validation" parsley-required-message="别忘了密码"/>
+    <span></span>
+    <span id="login_password_validation"></span>
+  </div>
+  <div class="indent-inputin">
+    <input class="btn btn-primary indent-btn" type="submit" value="登入" name="commit">
+  </div>
+</form>
