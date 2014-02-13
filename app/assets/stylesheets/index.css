@@ -17,10 +17,11 @@ body {
 	font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	color: #6d7276;
-	background: #eef2f4;
+	background: #fff;
 }
 .indextbody {
-	background: #fff;
+	background: #eef2f4;
+	padding-bottom:30px;
 }
 /*----------------导航-----*/
 .navbar-fixednav {
@@ -101,10 +102,10 @@ body {
 	height: 607px;
 }
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-	background-color: #dcdcdc
+	background-color: #f4fbff
 }
 .navbar-inverse .navbar-toggle .icon-bar {
-	background-color: #000
+	background-color: #78badd
 }
  @media (max-width:1680px) {
 .carousel {
@@ -451,12 +452,15 @@ body {
     background-color: #b0bbc1;
     border-color: #357EBD;
 }
+.footer-bgwarp {
+	background:#fff;
+	padding-top:30px;
+}
 .footer-bg {
 	background: #fff;
 	padding: 12px 0 30px;
 	font-size: 14px;
 	color: #9b9ea0;
-	margin-top:30px
 }
 .footer-bg a {
 	color: #9b9ea0;
@@ -786,7 +790,8 @@ body {
 }
 .payment-bank {
 	padding-top:5px;
-	padding-bottom:20px
+	padding-bottom:20px;
+	overflow:hidden;
 }
 .payment-pay {
 	width:474px;
@@ -872,4 +877,92 @@ body {
 }
 .detail-content p {
 	line-height: 30px;
+}
+.contactUs img {
+	padding-bottom:10px;
+}
+.contactUs p {
+	padding:15px 0;
+}
+.alipay-divs {
+	width:140px;
+	margin:0 auto;
+	height:24px;
+}
+.alipay-divs .span-jia, .alipay-divs .span-jian {
+	background:url(../images/numlist123-34.jpg) no-repeat;
+	width:32px;
+	height:24px;
+	cursor:pointer;
+	display:block;
+	float:left;
+	overflow:hidden;
+	line-height:24em;
+}
+.alipay-divs .span-jian {
+	background:url(../images/numlist123-35.jpg) no-repeat;
+}
+.alipay-divs .span-input {
+	float:left;
+	border:0;
+	border-top:1px solid #dbe1e4;
+	border-bottom:1px solid #dbe1e4;
+	width:76px;
+	background:#fff;
+	text-align:center;
+	font-size:16px;
+	line-height:22px;
+	height:24px;
+}
+.alipay-Failure {
+	background:#f1fef0;
+	border:1px solid #ececec;
+	padding:50px 20px 25px;
+	text-align:center;
+	width:440px;
+	margin:50px auto;
+}
+.alipay-Failure .div-text {
+	font-size:30px;
+	color:#000;
+	padding-bottom:22px;
+}
+.alipay-Failure .div-text img {
+	padding-right:10px;
+	vertical-align:middle;
+}
+.MessageNotify {
+	background:#fbe0e0 url(../images/numlist123-38.jpg) no-repeat 15px center;
+	height:30px;
+	border:1px solid #dd7878;
+	color:#dd7878;
+
+	padding:2px 0 2px 30px;
+	margin:0 30px;
+	
+}
+.MessageNotify2 {
+	background:#defadc url(../images/numlist123-39.jpg) no-repeat 15px center;
+	height:30px;
+	border:1px solid #34c429;
+	color:#34c429;
+
+	padding:2px 0 2px 30px;
+	margin:10px 30px;
+	
+}
+.navbar-inverse .navbar-nav > .disabled > a,
+.navbar-inverse .navbar-nav > .disabled > a:hover,
+.navbar-inverse .navbar-nav > .disabled > a:focus {
+  color: #78badd;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color:#78badd;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color:#78badd;
 }
