@@ -516,6 +516,10 @@ body {
 	top: 10px;
 	cursor: pointer;
 }
+.div-site label{
+  font-weight:normal;
+  margin:0;
+}
 .login-addsite {
 	border-bottom: 1px dashed #6d7276;
 	color: #6d7276;

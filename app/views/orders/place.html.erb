@@ -24,10 +24,10 @@
                     <% current_user.shipments.each do |shipment| %>
                     <!--地址一-->
                     <div class="login-sites">
-                      <input type="radio" name="shipment_id" value="<%= shipment.id%>" parsley-required="true">
+                      <input type="radio" name="shipment_id" id="shipment_<%= shipment.id %>" value="<%= shipment.id%>" parsley-required="true">
                       <div class="div-site">
                         <span class="close"><img src="images/numlist123-22.jpg" alt="删除" /></span>
-                        <p><%= shipment.mixed_str %></p>
+                        <label for="shipment_<%= shipment.id %>"><%= shipment.mixed_str %></label>
                       </div>
                     </div>
                     <% end %>
