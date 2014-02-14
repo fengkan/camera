@@ -21,10 +21,28 @@
               <div class="col-sm-8" id="div_login">
                   <div class="login-warp">
                     <div class="fn18 padding-top20 ">收货信息</div>
+                    <script type="text/javascript">
+                    function checkMode(){
+                      if($('input:radio[value=new]:checked').length){
+                        $('input[name=name]').parsley('addConstraint',{required:true});
+                        $('input[name=phone]').parsley('addConstraint',{required:true,regexp:'1\d{10}'});
+                        $('input[name=address]').parsley('addConstraint',{required:true});
+                      }
+                      else{
+                        $('input[name=name]').parsley('removeConstraint','required');
+                        $('input[name=name]').next().html('');
+                        $('input[name=phone]').parsley('removeConstraint','required');
+                        $('input[name=phone]').parsley('removeConstraint','regexp');
+                        $('input[name=phone]').next().html('');
+                        $('input[name=address]').parsley('removeConstraint','required');
+                        $('input[name=address]').next().html('');
+                      }
+                    }
+                    </script>
                     <% current_user.shipments.each do |shipment| %>
                     <!--地址一-->
                     <div class="login-sites">
-                      <input type="radio" name="shipment_id" id="shipment_<%= shipment.id %>" value="<%= shipment.id%>" parsley-required="true">
+                      <input type="radio" name="shipment_id" id="shipment_<%= shipment.id %>" value="<%= shipment.id%>" onchange="checkMode()" parsley-required="true">
                       <div class="div-site">
                         <span class="close"><img src="images/numlist123-22.jpg" alt="删除" /></span>
                         <label for="shipment_<%= shipment.id %>"><%= shipment.mixed_str %></label>
@@ -32,17 +50,23 @@
                     </div>
                     <% end %>
                     <div class="login-sites">
-                      <input type="radio" name="shipment_id" value="new" checked>
+                      <input type="radio" name="shipment_id" value="new" checked onchange="checkMode()">
                       <div class="login-addsite">你需要一个新地址？请在下面输入：</div>
                     </div>
                     <div class="indent-inputin">
-                      <input type="text" class=" indent-input2" name="name"  placeholder="1234">
+                      <input type="text" class=" indent-input2" name="name"  placeholder="1234" parsley-error-container="#name_validation">
+                      <span></span>
+                      <span id="name_validation"></span>
                     </div>
                     <div class="indent-inputin">
-                      <input type="text" class=" indent-input2" name="phone"  placeholder="请输入手机号码">
+                      <input type="text" class=" indent-input2" name="phone"  placeholder="请输入手机号码" parsley-error-container="#phone_validation">
+                      <span></span>
+                      <span id="phone_validation"></span>
                     </div>
                     <div class="indent-inputin">
-                      <input type="text" class=" indent-input3" name="address" placeholder="请输入收货地址">
+                      <input type="text" class=" indent-input3" name="address" placeholder="请输入收货地址" parsley-error-container="#address_validation">
+                      <span></span>
+                      <span id="address_validation"></span>
                     </div>
                   </div>
               </div>
@@ -158,18 +182,19 @@
     $('#form_order').parsley({ successClass: '', errorClass: 'indent-inputred' });
     $('#form_order').parsley( 'addListener', {
     onFieldSuccess: function ( elem ) {
-        if(elem.attr('type')!='checkbox')
-            elem.parent().next().children().html('<img src="/images/numlist123-18.jpg"  />');
-        else
+        if(elem.attr('type')!='checkbox'&&elem.attr('type')!='radio')
+            elem.next().html('<img src="/images/numlist123-18.jpg"  />');
+        else if(elem.attr('type')!='checkbox')
             $('#job_id_validation_img').html('<img src="/images/numlist123-18.jpg"  />');
         return true;
     },
     onFieldError: function ( elem ) {
-        if(elem.attr('type')!='checkbox')
-            elem.parent().next().children().html('<img src="/images/numlist123-19.jpg"  />');
-        else
+        if(elem.attr('type')!='checkbox'&&elem.attr('type')!='radio')
+            elem.next().html('<img src="/images/numlist123-19.jpg"  />');
+        else if(elem.attr('type')!='checkbox')
             $('#job_id_validation_img').html('<img src="/images/numlist123-19.jpg"  />');
         return false;
     }
 } );
+  if(checkMode)checkMode();
 </script>
