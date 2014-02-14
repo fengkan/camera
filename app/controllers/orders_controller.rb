@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class OrdersController < ApplicationController
 	before_filter :authenticate_user!, :only => ['index']
   # GET /orders
@@ -172,6 +174,7 @@ class OrdersController < ApplicationController
     if @order.nil?
     	render :action => :failed
   	elsif @order.status == "new"
+  		flash[:alert] = "付款未能成功，请重试！"
   		redirect_to :action => :confirm, :id => order_id
 		elsif @order.status != "paid"
     	render :action => :failed
