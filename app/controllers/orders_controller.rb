@@ -174,7 +174,7 @@ class OrdersController < ApplicationController
     if @order.nil?
     	render :action => :failed
   	elsif @order.status == "new"
-  		flash[:alert] = "¸¶¿îÎ´ÄÜ³É¹¦£¬ÇëÖØÊÔ£¡"
+  		flash[:alert] = "ä»˜æ¬¾æœªèƒ½æˆåŠŸï¼Œè¯·é‡è¯•ï¼"
   		redirect_to :action => :confirm, :id => order_id
 		elsif @order.status != "paid"
     	render :action => :failed
