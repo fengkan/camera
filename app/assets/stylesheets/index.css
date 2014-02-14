@@ -249,26 +249,16 @@ body {
 .index-faqdl dt {
 	background: url(../images/numlist123-10.jpg) no-repeat;
 	padding-left: 35px;
-	font-size: 18px;
-	color: #575e61;
+  color: #3D4345;
+  font-size: 20px;
 	padding-bottom: 3px;
+	font-weight:normal;
 }
 .index-faqdl dd {
 	padding-left: 35px;
-	font-size: 14px;
-	color: #999;
-}
-.footer-div {
-	border-top: 2px solid #e1e2e2;
-	padding-top: 5px;
-	font-size: 14px;
-	color: #9b9ea0;
-	margin-bottom: 30px;
-	overflow: hidden;
-}
-.footer-div a {
-	color: #9b9ea0;
-	margin: 0 5px 5px;
+  font-size: 15px;
+  line-height: 28px;
+  
 }
 @media screen and (max-width: 768px) and (min-width:240px) {
 .carousel {
@@ -464,6 +454,8 @@ body {
 	padding: 12px 0 30px;
 	font-size: 14px;
 	color: #9b9ea0;
+	border-top: 2px solid #EEF2F4;
+	margin-bottom: 30px;
 }
 .footer-bg a {
 	color: #9b9ea0;
@@ -969,4 +961,10 @@ body {
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
   background-color:#78badd;
+}
+.faq-container {
+	padding-bottom:20px;
+}
+.index-imgs p, .index-imgslast p{
+	padding:0 20px;
 }

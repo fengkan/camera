@@ -1,15 +1,53 @@
-<h2>Forgot your password?</h2>
-
-<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
+<% content_for :title do %>
+<%= "找回密码 - " + Settings.TAGLINE %>
 <% end %>
+<%content_for :head do%>
+<%= javascript_include_tag "parsley.min","parsley-messages.zh_cn"%>
+<script>
+$(document).ready(function() {
+  $('#new_user').parsley({ successClass: '', errorClass: 'indent-inputred' });
+  $('#new_user').parsley( 'addListener', listeners);
+});
+</script>
+<%end%>
+<div class="padding-top68 indextbody">
+  <div class="container">
+    <div class="indent-warp login-warp">
+      <% if !flash[:alert].blank? %>
+      <div class="notification n_failure"><%= flash[:alert]%></div>
+      <% end %>
+      <% if !flash[:notice].blank? %>
+      <div class="notification n_failure"><%= flash[:notice]%></div>
+      <% end %>
 
-<%= render "devise/shared/links" %>
+<%= devise_error_messages! %>
+
+      <div class="orderlist-top fn18">找回密码</div>
+      <div class="col-lg-12">
+        <form method="post" id="new_user" action="/users/password" accept-charset="UTF-8">
+          <div class="indent-inputin">
+            <input type="email" class="indent-input" name="user[email]" id="user_email"   placeholder="tale@mail.com" parsley-required="true" parsley-type="email" parsley-trigger="change" parsley-error-container="#login_email_validation" autofocus="autofocus"/>
+            <span></span>
+            <span id="login_email_validation"></span>
+          </div>
+          <div class="indent-inputin">
+            <input class="btn btn-primary indent-btn" type="submit" value="发送邮件" name="commit">
+          </div>
+        </form>
+        <div class="divnlink"><a href="/users/sign_in">登入</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+var listeners={
+  onFieldSuccess: function ( elem ) {
+    $(elem).next().html('<img src="/images/numlist123-18.jpg"/>');
+    return true;
+  },
+  onFieldError: function ( elem ) {
+    $(elem).next().html('<img src="/images/numlist123-19.jpg"/>');
+    return false;
+  }
+};
+</script>

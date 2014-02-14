@@ -1,7 +1,8 @@
 #encoding: utf-8
 
 class OrdersController < ApplicationController
-	before_filter :authenticate_user!, :only => ['index']
+	before_filter :login_required, :only => [:index]
+
   # GET /orders
   # GET /orders.json
   def index
@@ -19,7 +20,7 @@ class OrdersController < ApplicationController
     @order = Order.find_by_md5(params[:id])
     
     if @order.nil?
-    	if user_signed_in?
+    	if logged_in?
 	    	@order = Order.find_by_id_and_user_id(params[:id], current_user.id)
     	else
     		store_location
@@ -107,7 +108,7 @@ class OrdersController < ApplicationController
   			redirect_to :action => :show, :id => params[:id]
 			end
 		else
-	    if !user_signed_in?
+	    if !logged_in?
 	      user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
 	      begin
 	        user.save!
@@ -116,7 +117,7 @@ class OrdersController < ApplicationController
 	        # redirect_to orders#place
 	        redirect_to "/"
 	      else
-	        sign_in(:user, user)
+	      	self.current_user = user
 	      end
 	    end
 	

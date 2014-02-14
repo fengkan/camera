@@ -34,7 +34,7 @@
         <li><a href="/orders">订单</a></li>
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/contact_us">联系我们</a></li>
-        <% if signed_in? %>
+        <% if logged_in? %>
         <script type="text/javascript">
 					function logout(){
             $.ajax({
@@ -47,9 +47,9 @@
             });
           }
         </script>
-        <li class="li-login"><div><a href="#"><%=current_user.email%></a><input name="" type="button"  value="退出" class="user-quick" onclick="logout()"/></div></li>
+        <li class="li-login"><div><a href="#"><%=current_user.email%></a><a href="/accounts/logout">退出</a></div></li>
         <% else %>
-        <li><a href="/users/sign_in">登入</a></li>
+        <li><a href="/accounts/login">登入</a></li>
         <% end %>
       </ul>
     </div>

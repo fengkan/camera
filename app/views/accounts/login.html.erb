@@ -13,8 +13,8 @@ $(document).ready(function() {
 <div class="padding-top68 indextbody">
   <div class="container">
     <div class="indent-warp login-warp">
-      <% if !flash[:alert].blank? %>
-      <div class="notification n_failure"><%= flash[:alert]%></div>
+      <% if !flash.now[:notice].blank? %>
+      <div class="notification n_failure"><%= flash.now[:notice] %></div>
       <% end %>
       <div class="orderlist-top fn18">登入</div>
       <div class="col-lg-12">

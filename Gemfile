@@ -38,7 +38,7 @@ gem 'unicorn'
 # gem 'debugger'
 
 gem "mysql2", '0.3.11'
-gem 'devise'
+#gem 'devise'
 gem 'simple_form'
 gem 'rails_config'
 gem 'resque', :require => "resque/server"

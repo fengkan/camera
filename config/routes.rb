@@ -11,8 +11,14 @@ Camera::Application.routes.draw do
   
 	end
 	
-	
-  devise_for :users
+	resources :accounts do
+		collection do
+			get :signup, :login, :logout
+			post :signup, :login
+		end
+	end
+
+#  devise_for :users
     match 'orders/close/:id' => 'orders#close'
 
     match 'order/confirm' => 'orders#confirm'
