@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131218092441) do
+ActiveRecord::Schema.define(:version => 20140214094622) do
 
   create_table "jobs", :force => true do |t|
     t.string   "name",       :limit => 100
@@ -20,13 +20,55 @@ ActiveRecord::Schema.define(:version => 20131218092441) do
     t.datetime "updated_at"
   end
 
+  create_table "order_histories", :force => true do |t|
+    t.integer  "order_id",                 :null => false
+    t.string   "status",     :limit => 20, :null => false
+    t.datetime "created_at",               :null => false
+  end
+
+  create_table "order_items", :force => true do |t|
+    t.integer  "order_id",                 :null => false
+    t.integer  "job_id",                   :null => false
+    t.string   "job_style",  :limit => 20
+    t.integer  "job_amount"
+    t.float    "price"
+    t.datetime "created_at",               :null => false
+  end
+
   create_table "orders", :force => true do |t|
+    t.integer  "user_id",                    :null => false
+    t.integer  "shipment_id",                :null => false
+    t.string   "status",      :limit => 20
+    t.string   "logistics",   :limit => 200
+    t.datetime "created_at",                 :null => false
+    t.string   "md5",         :limit => 40,  :null => false
   end
 
   create_table "photos", :force => true do |t|
     t.integer  "job_id"
     t.string   "filename",   :limit => 100
     t.datetime "created_at"
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "shipments", :force => true do |t|
+    t.integer  "user_id",                                :null => false
+    t.text     "name"
+    t.text     "address"
+    t.text     "phone"
+    t.text     "postcode"
+    t.integer  "del_flg",    :limit => 1, :default => 0, :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   create_table "users", :force => true do |t|
