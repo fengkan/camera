@@ -54,20 +54,26 @@
                       <div class="login-addsite"><label for="shipment_new">你需要一个新地址？请在下面输入：</label></div>
                     </div>
                     <div class="indent-inputin">
-                      <input type="text" class=" indent-input2" name="name"  placeholder="1234" parsley-error-container="#name_validation">
+                      <input type="text" class=" indent-input2" name="name"  placeholder="1234" onclick="$('#shipment_new').click();" parsley-error-container="#name_validation">
                       <span></span>
                       <span id="name_validation"></span>
                     </div>
                     <div class="indent-inputin">
-                      <input type="text" class=" indent-input2" name="phone"  placeholder="请输入手机号码" parsley-error-container="#phone_validation">
+                      <input type="text" class=" indent-input2" name="phone"  placeholder="请输入手机号码" onclick="$('#shipment_new').trigger('click');" parsley-error-container="#phone_validation">
                       <span></span>
                       <span id="phone_validation"></span>
                     </div>
                     <div class="indent-inputin">
-                      <input type="text" class=" indent-input3" name="address" placeholder="请输入收货地址" parsley-error-container="#address_validation">
+                      <input type="text" class=" indent-input3" name="address" placeholder="请输入收货地址" onclick="$('#shipment_new').trigger('click');" parsley-error-container="#address_validation">
                       <span></span>
                       <span id="address_validation"></span>
                     </div>
+                    <script type="text/javascript">
+                      $('input[name=name],input[name=phone],input[name=address]').keydown(function(e){
+                        if(e.which!=9&&e.which!=13&&e.which!=32)
+                          $('#shipment_new').click();
+                      });
+                    </script>
                   </div>
               </div>
           <div class="col-sm-4">
