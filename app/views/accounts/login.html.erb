@@ -14,12 +14,12 @@ $(document).ready(function() {
   <div class="container">
     <div class="indent-warp login-warp">
       <% if !flash.now[:notice].blank? %>
-      <div class="notification n_failure"><%= flash.now[:notice] %></div>
+      <div class="notification <%= flash[:notice_class] %>"><%= flash.now[:notice] %></div>
       <% end %>
       <div class="orderlist-top fn18">登入</div>
       <div class="col-lg-12">
         <%=render partial:"shared/login"%>
-        <div class="divnlink"><a href="/users/password/new">找回密码</a></div>
+        <div class="divnlink"><a href="/accounts/forgetpwd">找回密码</a></div>
       </div>
     </div>
   </div>

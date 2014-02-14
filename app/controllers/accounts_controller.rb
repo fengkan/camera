@@ -29,4 +29,20 @@ class AccountsController < ApplicationController
     flash.now[:notice] = "You have been logged out."
     redirect_back_or_default(:controller => '/misc', :action => 'index')
 	end
+	
+	def forgetpwd
+    return unless request.post?
+    u = User.find_by_email(params[:email])
+    if u.nil?
+      flash[:notice_class] = 'n_failure'
+	    flash.now[:notice] = "未能找到匹配的用户，请重试"
+  	else
+  		u.reset_password_token =Digest::SHA1.hexdigest("--#{Time.now.to_s}--")
+  		u.reset_password_sent_at = Time.now
+  		u.save
+#		  email = NotificationMailer.deliver_forgetpwd(u)
+      flash[:notice_class] = 'n_success'
+	    flash.now[:notice] = "我们已将用于登入的连接发送到您的信箱，快去看看吧"
+  	end
+	end
 end

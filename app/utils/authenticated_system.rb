@@ -68,7 +68,8 @@ module AuthenticatedSystem
       respond_to do |accepts|
         accepts.html do
           store_location
-          flash[:notice] = "您需要先注册才能完成刚才的操作"
+		      flash[:notice_class] = 'n_failure'
+          flash[:notice] = "您需要先登入才能完成刚才的操作"
           redirect_to :controller => '/accounts', :action => 'login'
         end
         accepts.xml do
