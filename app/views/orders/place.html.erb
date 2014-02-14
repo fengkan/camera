@@ -109,15 +109,37 @@
                           <td><input type="hidden" id="job_id" name="job_id" value="<%=@job_id%>"/><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%= Settings.PRODUCTS[@job_style]["product_name"] %></span></td>
                         <td>
                           <div class="alipay-divs">
-                            <span class="span-jian" onclick="var v;if((v=parseInt($('#count').val()))>0)$('#count').val(--v);updateTotal(v);"></span>
-                            <input id="count" name="count" type="text"  class="span-input" value="10"/>
-                            <span class="span-jia" onclick="var v;if((v=parseInt($('#count').val()))<10)$('#count').val(++v);updateTotal(v);"></span>
+                            <script type="text/javascript">
+                              function changeCount(d){
+                                var v=parseInt($('#count').val())+d;
+                                if(v>=10){
+                                  v=10;
+                                  $('#span_plus').css('cursor','not-allowed');
+                                  $('#span_minus').css('cursor','auto');
+                                }
+                                else if(v<=0){
+                                  v=0;
+                                  $('#span_plus').css('cursor','auto');
+                                  $('#span_minus').css('cursor','not-allowed');
+                                }
+                                else{
+                                  $('#span_plus').css('cursor','auto');
+                                  $('#span_minus').css('cursor','auto');
+                                }
+                                $('#count').val(v);
+                                updateTotal(v);
+                              }
+                            </script>
+                            <span class="span-jian" id="span_minus" onclick="changeCount(-1)"></span>
+                            <input id="count" name="count" type="text"  class="span-input" value="10" onchange="changeCount(0)"/>
+                            <span class="span-jia" id="span_plus" onclick="changeCount(1)"></span>
                           </div>
                         </td>
                         <script type="text/javascript">
                           function updateTotal(v){
                             $('#total').html(' '+v*<%= Settings.PRODUCTS[@job_style]["product_price"] %>+' ');
                           }
+                          changeCount(0);
                         </script>
                           <td class="text-center fn18"><%= Settings.PRODUCTS[@job_style]["product_price"] %> 元</td>
                       </tr>
