@@ -89,34 +89,35 @@
                 <div class="login-warp">
                     <div class="fn18">账户注册</div>
                     <div class="indent-inputin">
-                        <table><tr><td>
-                            <input type="text" class="indent-input" id="email" name="email" placeholder="tale@mail.com" parsley-required="true" parsley-type="email" parsley-trigger="change" parsley-error-container="#register_email_validation"/>
-                            </td><td><span></span></td><td id="register_email_validation"></td></tr></table>
+                      <input type="text" class="indent-input" id="email" name="email" placeholder="tale@mail.com" parsley-required="true" parsley-type="email" parsley-trigger="change" parsley-error-container="#register_email_validation"/>
+                      <span></span>
+                      <span id="register_email_validation"></span>
                     </div>
                     <div class="indent-inputin">
-                        <table><tr><td>
-                            <input type="password" class="indent-input" id="password" name="password" placeholder="请输入密码" parsley-required="true" parsley-validation-minlength="1" parsley-minlength="6" parsley-trigger="change" parsley-error-container="#register_password_validation" parsley-minlength-message="密码应至少6位"/>
-                            </td><td><span></span></td><td id="register_password_validation"></td></tr></table>
+                      <input type="password" class="indent-input" id="password" name="password" placeholder="请输入密码" parsley-required="true" parsley-validation-minlength="1" parsley-minlength="6" parsley-trigger="change" parsley-error-container="#register_password_validation" parsley-minlength-message="密码应至少6位"/>
+                      <span></span>
+                      <span id="register_password_validation"></span>
                     </div>
                     <div class="indent-inputin">
-                        <table><tr><td>
-                            <input type="password" class="indent-input" id="password_confirmation" name="password_confirmation" placeholder="请确认密码" parsley-required="true" parsley-equalto="#password" parsley-validation-minlength="1" parsley-trigger="change" parsley-error-container="#register_confirm_validation" parsley-equalto-message="密码不一致"/>
-                            </td><td><span></span></td><td id="register_confirm_validation"></td></tr></table>
+                      <input type="password" class="indent-input" id="password_confirmation" name="password_confirmation" placeholder="请确认密码" parsley-required="true" parsley-equalto="#password" parsley-validation-minlength="1" parsley-trigger="change" parsley-error-container="#register_confirm_validation" parsley-equalto-message="密码不一致"/>
+                      <span></span>
+                      <span id="register_confirm_validation"></span>
                     </div>
                     <div class="fn18 padding-top20">收货信息</div>
                     <div class="indent-inputin">
-                        <table><tr><td>
-                            <input type="text" class="indent-input2" id="name" name="name" placeholder="姓名" parsley-required="true"  parsley-error-container="#name_validation" parsley-validation-minlength="1" parsley-trigger="keyup" parsley-required-message="请输入你的姓名"/>
-                            </td><td><span></span></td><td id="name_validation"></td></tr></table>
+                      <input type="text" class="indent-input2" id="name" name="name" placeholder="姓名" parsley-required="true"  parsley-error-container="#name_validation" parsley-validation-minlength="1" parsley-trigger="keyup" parsley-required-message="请输入你的姓名"/>
+                      <span></span>
+                      <span id="name_validation"></span>
                     </div>
                     <div class="indent-inputin">
-                        <table><tr><td>
-                            <input type="text" class="indent-input2" id="phone" name="phone" placeholder="手机号码" parsley-required="true"  parsley-error-container="#phone_validation" parsley-regexp="1\d{10}" parsley-trigger="keyup" parsley-required-message="请输入手机号码" parsley-regexp-message="手机号码有误"/>
-                            </td><td><span></span></td><td id="phone_validation"></td></tr></table>
+                      <input type="text" class="indent-input2" id="phone" name="phone" placeholder="手机号码" parsley-required="true"  parsley-error-container="#phone_validation" parsley-regexp="1\d{10}" parsley-trigger="keyup" parsley-required-message="请输入手机号码" parsley-regexp-message="手机号码有误"/>
+                      <span></span>
+                      <span id="phone_validation"></span>
                     </div>
-                    <div class="indent-inputin"><table><tr><td>
-                        <input type="text" class="indent-input3" id="address" name="address" placeholder="收货地址" parsley-required="true"  parsley-error-container="#address_validation" parsley-validation-minlength="1" parsley-trigger="keyup" parsley-required-message="请输入收货地址"/>
-                        </td><td><span></span></td><td id="address_validation"></td></tr></table>
+                    <div class="indent-inputin">
+                      <input type="text" class="indent-input3" id="address" name="address" placeholder="收货地址" parsley-required="true"  parsley-error-container="#address_validation" parsley-validation-minlength="1" parsley-trigger="keyup" parsley-required-message="请输入收货地址"/>
+                      <span></span>
+                      <span id="address_validation"></span>
                     </div>
                   </div>
               </div>
