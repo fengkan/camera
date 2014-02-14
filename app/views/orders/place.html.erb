@@ -50,8 +50,8 @@
                     </div>
                     <% end %>
                     <div class="login-sites">
-                      <input type="radio" name="shipment_id" value="new" checked onchange="checkMode()">
-                      <div class="login-addsite">你需要一个新地址？请在下面输入：</div>
+                      <input type="radio" name="shipment_id" id="shipment_new" value="new" checked onchange="checkMode()">
+                      <div class="login-addsite"><label for="shipment_new">你需要一个新地址？请在下面输入：</label></div>
                     </div>
                     <div class="indent-inputin">
                       <input type="text" class=" indent-input2" name="name"  placeholder="1234" parsley-error-container="#name_validation">
