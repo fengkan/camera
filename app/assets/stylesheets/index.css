@@ -14,7 +14,7 @@ a {
 	color: #78badd;
 }
 body {
-	font-family: Microsoft YaHei, Arial, Helvetica, sans-serif;
+	font-family: Microsoft YaHei, "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif, Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	color: #6d7276;
 	background: #fff;
@@ -952,6 +952,9 @@ body {
 .navbar-inverse .navbar-nav > .disabled > a:focus {
   color: #78badd;
   background-color: transparent;
+}
+.navbar-toggle {
+	border-radius: 0px;
 }
 
 .navbar-inverse .navbar-toggle {
