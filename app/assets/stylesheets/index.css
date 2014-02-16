@@ -932,9 +932,8 @@ body {
 	vertical-align:middle;
 }
 .notification {
-	height:30px;
 	line-height: 24px;
-	padding:2px 0 2px 36px;
+	padding:2px 10px 2px 36px;
 	margin:10px 15px;
 }
 .n_success {

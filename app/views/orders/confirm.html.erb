@@ -13,6 +13,7 @@ $(document).ready(function() {
 <div class="padding-top68 indextbody">
   <div class="container">
     <div class="indent-warp">
+      <div class="notification n_failure visible-xs visible-sm">您可能正在平板或者手机上浏览我们的网站，建议您在桌面电脑上进行支付操作</div>
       <% if !flash[:alert].blank? %>
       <div class="notification n_failure"><%= flash[:alert]%></div>
       <% end %>
