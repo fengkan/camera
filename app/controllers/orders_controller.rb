@@ -128,7 +128,7 @@ class OrdersController < ApplicationController
 	      shipment = current_user.shipments.build(:name => params[:name], :address => params[:address], :phone => params[:phone])
 	      shipment.save
 	    else
-	      shipment = Shipment.find_by_id_and_user_id(params[:id], current_user.id)
+	      shipment = Shipment.find_by_id_and_user_id(params[:shipment_id], current_user.id)
 	    end
 	
 	    @order.shipment_id = shipment.id

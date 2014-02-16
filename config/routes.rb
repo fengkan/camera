@@ -13,7 +13,7 @@ Camera::Application.routes.draw do
 	
 	resources :accounts do
 		collection do
-			get :signup, :login, :logout, :forgetpwd
+			get :signup, :login, :logout, :forgetpwd, :reset, :newpwd
 			post :signup, :login, :forgetpwd
 		end
 	end

@@ -45,4 +45,19 @@ class AccountsController < ApplicationController
 	    flash.now[:notice] = "我们已将用于登入的连接发送到您的信箱，快去看看吧"
   	end
 	end
+	
+	def reset
+		reset_id = params[:r]
+    u = User.find_by_reset_password_token(reset_id, :conditions => ['reset_password_sent_at >= ?', Date.today - 1])
+    if u.nil?
+      flash[:notice_class] = 'n_failure'
+	    flash.now[:notice] = "您用于登入的连接有误，或者已经超过有效期，请重试"
+			render :action => :forgetpwd
+  	else
+			self.current_user = u
+      flash[:notice_class] = 'n_success'
+	    flash[:notice] = "您已登入，请设置新的登入密码"
+			redirect_to :action => :newpwd
+		end
+	end
 end
