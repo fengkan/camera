@@ -94,6 +94,7 @@ class OrdersController < ApplicationController
     @job_id = params[:job_id]
     if Job.exists?(@job_id)
       @job_style = 0
+      @shipments=current_user.shipments
     else
       redirect_to '/job/show'
     end

@@ -41,7 +41,7 @@
                     </script>
                     <span id="shipment_id_validation"></span>
                     <!--地址一-->
-                    <% current_user.shipments.each do |shipment| %>
+                    <% @shipments.each do |shipment| %>
                     <div class="login-sites">
                       <input type="radio" name="shipment_id" id="shipment_<%= shipment.id %>" value="<%= shipment.id%>" onchange="checkMode()" parsley-required="true" parsley-error-container="#shipment_id_validation" parsley-required-message="必须至少选择一项">
                       <div class="div-site">
