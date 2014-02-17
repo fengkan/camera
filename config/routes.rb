@@ -13,10 +13,13 @@ Camera::Application.routes.draw do
 	
 	resources :accounts do
 		collection do
-			get :signup, :login, :logout, :forgetpwd, :reset, :newpwd
-			post :signup, :login, :forgetpwd
+			get :login, :logout, :forgetpwd, :reset, :newpwd
+			post :login, :forgetpwd, :newpwd
 		end
 	end
+	
+    match '/login' => 'accounts#login'
+    match '/logout' => 'accounts#logout'
 
 #  devise_for :users
     match 'orders/close/:id' => 'orders#close'
@@ -25,7 +28,6 @@ Camera::Application.routes.draw do
     match 'orders/confirm/:id' => 'orders#confirm'
     match 'order/place' => 'orders#place'
     match 'job/show' => 'jobs#show'
-    match '' => 'misc#index'
     match 'faq' => 'misc#faq'
     match 'contact_us' => 'misc#contactus'
   # The priority is based upon order of creation:
@@ -77,7 +79,7 @@ Camera::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'misc#index'
 
   # See how all your routes lay out with "rake routes"
 
