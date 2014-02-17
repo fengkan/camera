@@ -113,9 +113,9 @@ class OrdersController < ApplicationController
 	      begin
 	        user.save!
 	      rescue
-	        # TODO
-	        # redirect_to orders#place
-	        redirect_to "/"
+		  		flash[:alert] = "该 Email 已存在，请登入或者选择其他 Email"
+	        redirect_to :controller => :orders, :action => :place, :job_id => params[:job_id]
+	        return
 	      else
 	      	self.current_user = user
 	      end

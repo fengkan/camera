@@ -4,6 +4,9 @@
 <div class="padding-top68 indextbody">
     <div class="container">
       <div class="indent-warp">
+	      <% if !flash[:alert].blank? %>
+	      <div class="notification n_failure"><%= flash[:alert]%></div>
+	      <% end %>
         <div class="indent-step">
           <div class="col-xs-4 step-stop"><span>1</span>
               <p>确认支付信息</p>
