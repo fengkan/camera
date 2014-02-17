@@ -25,6 +25,7 @@ Camera::Application.routes.draw do
     match 'orders/confirm/:id' => 'orders#confirm'
     match 'order/place' => 'orders#place'
     match 'job/show' => 'jobs#show'
+    match 'job/:id' => 'jobs#query'
     match '' => 'misc#index'
     match 'faq' => 'misc#faq'
     match 'contact_us' => 'misc#contactus'
