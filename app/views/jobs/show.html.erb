@@ -6,8 +6,16 @@
           <div class="Viewleft20">
             <p class="padding-b5">查看3D照片</p>
             <div class="Viewleftinput">
-              <input name="" type="text" class="divinput"  placeholder="请输入你当时留下的邮箱地址" />
-              <input name="" type="button" class="input-btn"  value="搜索"/>
+              <script type="text/javascript">
+                function search(){
+                  $.post('/job/'+$('#job_name').val(),'',function(data,status){
+                    $('#viewport').html(data.id);
+                  },'json');
+                }
+                    
+              </script>
+              <input name="" id='job_name' type="text" class="divinput"  placeholder="请输入你当时留下的邮箱地址" />
+              <input name="" type="button" class="input-btn"  value="搜索" onclick="search()"/>
             </div>
           </div>
           <div class="Viewbgone"></div>
@@ -44,7 +52,7 @@
         <div class="View-bg">
           <div class="Viewright-title">样板照片1</div>
           <div class="Viewrightin">
-            <div class="divimgs"> <img src="/images/numlist123-5.png"  /></div>
+            <div class="divimgs" id='viewport'> <img src="/images/numlist123-5.png"  /></div>
             <a href="#" target="_blank" class="down-3d">下载3d模型</a>
             <div class="Print-div">
             <a href="#">
