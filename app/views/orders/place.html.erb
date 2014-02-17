@@ -39,17 +39,18 @@
                       }
                     }
                     </script>
-                    <% current_user.shipments.each do |shipment| %>
+                    <span id="shipment_id_validation"></span>
                     <!--地址一-->
+                    <% current_user.shipments.each do |shipment| %>
                     <div class="login-sites">
-                      <input type="radio" name="shipment_id" id="shipment_<%= shipment.id %>" value="<%= shipment.id%>" onchange="checkMode()" parsley-required="true">
+                      <input type="radio" name="shipment_id" id="shipment_<%= shipment.id %>" value="<%= shipment.id%>" onchange="checkMode()" parsley-required="true" parsley-error-container="#shipment_id_validation" parsley-required-message="必须至少选择一项">
                       <div class="div-site">
                         <label for="shipment_<%= shipment.id %>"><%= shipment.mixed_str %></label>
                       </div>
                     </div>
                     <% end %>
                     <div class="login-sites">
-                      <input type="radio" name="shipment_id" id="shipment_new" value="new" checked onchange="checkMode()">
+                      <input type="radio" name="shipment_id" id="shipment_new" value="new" onchange="checkMode()">
                       <div class="login-addsite"><label for="shipment_new">你需要一个新地址？请在下面输入：</label></div>
                     </div>
                     <div class="indent-inputin">
@@ -68,6 +69,7 @@
                       <span id="address_validation"></span>
                     </div>
                     <script type="text/javascript">
+                      $('input[type=radio]:first').click();
                       $('input[name=name],input[name=phone],input[name=address]').keydown(function(e){
                         if(e.which!=9&&e.which!=13&&e.which!=32)
                           $('#shipment_new').click();
@@ -190,14 +192,14 @@
     onFieldSuccess: function ( elem ) {
         if(elem.attr('type')!='checkbox'&&elem.attr('type')!='radio')
             elem.next().html('<img src="/images/numlist123-18.jpg"  />');
-        else if(elem.attr('type')!='checkbox')
+        else if(elem.attr('type')=='checkbox')
             $('#job_id_validation_img').html('<img src="/images/numlist123-18.jpg"  />');
         return true;
     },
     onFieldError: function ( elem ) {
         if(elem.attr('type')!='checkbox'&&elem.attr('type')!='radio')
             elem.next().html('<img src="/images/numlist123-19.jpg"  />');
-        else if(elem.attr('type')!='checkbox')
+        else if(elem.attr('type')=='checkbox')
             $('#job_id_validation_img').html('<img src="/images/numlist123-19.jpg"  />');
         return false;
     }
