@@ -1,3 +1,4 @@
+<%= javascript_include_tag "three.min"%>
 <div class="padding-top68 indextbody">
   <div class="container margin-top30">
     <div class="row">
@@ -9,7 +10,6 @@
               <script type="text/javascript">
                 function search(){
                   $.post('/job/'+$('#job_name').val(),'',function(data,status){
-                    $('#viewport').html(data.id);
                   },'json');
                 }
                     
@@ -52,7 +52,7 @@
         <div class="View-bg">
           <div class="Viewright-title">样板照片1</div>
           <div class="Viewrightin">
-            <div class="divimgs" id='viewport'> <img src="/images/numlist123-5.png"  /></div>
+            <div class="divimgs"><canvas style="height:532px;width:502px" id="viewport"></canvas></div>
             <a href="#" target="_blank" class="down-3d">下载3d模型</a>
             <div class="Print-div">
             <a href="#">
@@ -72,3 +72,22 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera( 75, 502 / 532, 0.1, 1000 );
+  var renderer = new THREE.WebGLRenderer({canvas:document.getElementById('viewport')});
+  
+  renderer.setSize( 502,532 );
+  var geometry = new THREE.CubeGeometry(1,1,1);
+  var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+  var cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+  camera.position.z = 5;
+  var render = function () {
+    requestAnimationFrame(render);
+    cube.rotation.x += 0.1;
+    cube.rotation.y += 0.1;
+    renderer.render(scene, camera);
+  };
+  render();
+</script>
