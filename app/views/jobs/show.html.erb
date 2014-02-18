@@ -1,4 +1,4 @@
-<%= javascript_include_tag "three.min"%>
+<%= javascript_include_tag "three.min","OBJLoader","MTLLoader","OBJMTLLoader"%>
 <div class="padding-top68 indextbody">
   <div class="container margin-top30">
     <div class="row">
@@ -8,8 +8,23 @@
             <p class="padding-b5">查看3D照片</p>
             <div class="Viewleftinput">
               <script type="text/javascript">
+                var scene = new THREE.Scene();
                 function search(){
                   $.post('/job/'+$('#job_name').val(),'',function(data,status){
+                    var loader = new THREE.OBJMTLLoader();
+                    console.log('/obj/'+data.id+'/'+data.id+'.obj');
+                    loader.load( '/obj/'+data.id+'/'+data.id+'.obj', '/obj/'+data.id+'/'+data.id+'.mtl', function ( object ) {
+                      object.position.x = 0;
+                      object.position.y = 0;
+                      object.position.z = 0;
+                      object.rotation.x = 0;
+                      object.rotation.y = 0;
+                      object.rotation.z = -1.6;
+                      object.scale.x = 1;
+                      object.scale.y = 1;
+                      object.scale.z = 1;
+                      scene.add( object );
+                    } );
                   },'json');
                 }
                     
@@ -73,11 +88,11 @@
   </div>
 </div>
 <script type="text/javascript">
-  var scene = new THREE.Scene();
   var camera = new THREE.PerspectiveCamera( 75, 502 / 532, 0.1, 1000 );
   var renderer = new THREE.WebGLRenderer({canvas:document.getElementById('viewport')});
-  
   renderer.setSize( 502,532 );
+  var ambient_light = new THREE.AmbientLight( 0xffffff );
+  scene.add( ambient_light );
   var geometry = new THREE.CubeGeometry(1,1,1);
   var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
   var cube = new THREE.Mesh(geometry, material);
