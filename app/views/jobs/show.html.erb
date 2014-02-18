@@ -1,6 +1,6 @@
-<%= javascript_include_tag "three.min","OBJLoader","MTLLoader","OBJMTLLoader"%>
-<div class="padding-top68 indextbody">
-  <div class="container margin-top30">
+<%= javascript_include_tag "three.min","OBJLoader","MTLLoader","OBJMTLLoader","angular.min","job_controllers"%>
+<div class="padding-top68 indextbody" ng-app="job">
+  <div class="container margin-top30" ng-controller="jobId">
     <div class="row">
       <div class="col-md-4">
         <div class="View-bg">
@@ -12,8 +12,9 @@
                 function search(){
                   $.post('/job/'+$('#job_name').val(),'',function(data,status){
                     var loader = new THREE.OBJMTLLoader();
-                    console.log('/obj/'+data.id+'/'+data.id+'.obj');
                     loader.load( '/obj/'+data.id+'/'+data.id+'.obj', '/obj/'+data.id+'/'+data.id+'.mtl', function ( object ) {
+                      $('#download').attr('href','/obj/'+data.id+'/'+data.id+'.zip'
+                      
                       object.position.x = 0;
                       object.position.y = 0;
                       object.position.z = 0;
@@ -29,13 +30,13 @@
                 }
                     
               </script>
-              <input name="" id='job_name' type="text" class="divinput"  placeholder="请输入你当时留下的邮箱地址" />
+              <input name="" id='job_name' type="text" class="divinput"  placeholder="请输入你当时留下的邮箱地址" ng-model="jobId.name"/>
               <input name="" type="button" class="input-btn"  value="搜索" onclick="search()"/>
             </div>
           </div>
           <div class="Viewbgone"></div>
           <div class=" padding-top15">
-            <p class="padding-b5 padding-120">"tale@.mail.com"的3D照片:</p>
+            <p class="padding-b5 padding-120">"{{jobId.name}}"的3D照片:</p>
             <div class="Viewleft-li">
               <ul>
                 <li class="col-lg-4 stopli"><a href="#"><img src="/images/numlist123-20.jpg"/></a></li>
@@ -68,9 +69,9 @@
           <div class="Viewright-title">样板照片1</div>
           <div class="Viewrightin">
             <div class="divimgs"><canvas style="height:532px;width:502px" id="viewport"></canvas></div>
-            <a href="#" target="_blank" class="down-3d">下载3d模型</a>
+            <a id="download" href="#" target="_blank" class="down-3d">下载3d模型</a>
             <div class="Print-div">
-            <a href="#">
+            <a id="print" href="#">
             <img src="/images/numlist123-23.jpg"/><span>打印此模型</span>
             <p>( 5cm规格只要￥128 )</p>
              </a>
@@ -100,8 +101,6 @@
   camera.position.z = 5;
   var render = function () {
     requestAnimationFrame(render);
-    cube.rotation.x += 0.1;
-    cube.rotation.y += 0.1;
     renderer.render(scene, camera);
   };
   render();
