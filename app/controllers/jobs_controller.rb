@@ -4,7 +4,7 @@ class JobsController < ApplicationController
     end
   def query
     @name=params[:id]
-    @job=Job.find_by_name(@name)
+    @job=Job.where(name:@name)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @job }
