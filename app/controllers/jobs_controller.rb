@@ -7,7 +7,7 @@ class JobsController < ApplicationController
     @job=Job.where(name:@name)
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @job }
+      format.json { render json: @job, status: @job.empty??404:200 }
     end
   end
 end
