@@ -9,26 +9,7 @@
             <div class="Viewleftinput">
               <script type="text/javascript">
                 var scene = new THREE.Scene();
-                function search(){
-                  $.post('/job/'+$('#job_name').val(),'',function(data,status){
-                    var loader = new THREE.OBJMTLLoader();
-                    loader.load( '/obj/'+data.id+'/'+data.id+'.obj', '/obj/'+data.id+'/'+data.id+'.mtl', function ( object ) {
-                      $('#download').attr('href','/obj/'+data.id+'/'+data.id+'.zip'
-                      
-                      object.position.x = 0;
-                      object.position.y = 0;
-                      object.position.z = 0;
-                      object.rotation.x = 0;
-                      object.rotation.y = 0;
-                      object.rotation.z = -1.6;
-                      object.scale.x = 1;
-                      object.scale.y = 1;
-                      object.scale.z = 1;
-                      scene.add( object );
-                    } );
-                  },'json');
-                }
-                    
+                var model=null;
               </script>
               <input name="" id='job_name' type="text" class="divinput"  placeholder="请输入你当时留下的邮箱地址" ng-model="name"/>
               <input name="" type="button" class="input-btn"  value="搜索" ng-click="queriedName=name;query()"/>
@@ -39,7 +20,7 @@
             <p class="padding-b5 padding-120">"{{queriedName}}"的3D照片:</p>
             <div class="Viewleft-li">
               <ul>
-                <li ng-repeat="job in results" class="col-lg-4{{ifStopLi(job.id)}}"><a href="" ng-click="$parent.currentId=job.id"><img src="/images/numlist123-20.jpg"/></a></li>
+                <li ng-repeat="job in results" class="col-lg-4{{ifStopLi(job.id)}}" ng-click=""><a href="" ng-click="$parent.currentId=job.id;changeModel(job.id)"><img src="/images/numlist123-20.jpg"/></a></li>
               </ul>
             </div>
           </div>
