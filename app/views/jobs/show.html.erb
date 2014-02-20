@@ -12,7 +12,7 @@
                 var model=null;
               </script>
               <input name="" id='job_name' type="text" class="divinput"  placeholder="请输入你当时留下的邮箱地址" ng-model="name"/>
-              <input name="" type="button" class="input-btn"  value="搜索" ng-click="queriedName=name;query()"/>
+              <input name="" type="button" class="input-btn"  value="搜索" ng-click="queriedName=name"/>
             </div>
           </div>
           <div class="Viewbgone"></div>
@@ -20,7 +20,7 @@
             <p class="padding-b5 padding-120">"{{queriedName}}"的3D照片:</p>
             <div class="Viewleft-li">
               <ul>
-                <li ng-repeat="job in results" class="col-lg-4{{ifStopLi(job.id)}}" ng-click=""><a href="" ng-click="$parent.currentId=job.id;changeModel(job.id)"><img src="/images/numlist123-20.jpg"/></a></li>
+                <li ng-repeat="job in results" class="col-lg-4{{ifStopLi(job.id)}}" ng-click=""><a href="" ng-click="$parent.currentId=job.id"><img src="/images/numlist123-20.jpg"/></a></li>
               </ul>
             </div>
           </div>

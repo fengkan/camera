@@ -1,15 +1,16 @@
 var job=angular.module('job',[]);
 
 job.controller('jobId',function($scope,$http){
-  $scope.query=function(){
-    $http.post('/job/'+$scope.name+'.json','').success(function(data){
+  $scope.$watch('queriedName',function(){
+    $http.post('/job/'+$scope.queriedName+'.json','').success(function(data){
       $scope.results=data;
       $scope.currentId=data[0].id;
     });
-  };
-  $scope.changeModel=function(newId){
+  });
+  $scope.$watch('currentId',function(){
     if(model)
       scene.remove(model);
+    var newId=$scope.currentId;
     var loader = new THREE.OBJMTLLoader();
     loader.load( '/obj/'+newId+'/'+newId+'.obj', '/obj/'+newId+'/'+newId+'.mtl', function ( object ) {
       object.position.x = 0;
@@ -24,7 +25,7 @@ job.controller('jobId',function($scope,$http){
       model=object;
       scene.add( model );
     } );
-  }
+  });
   $scope.ifStopLi=function(id){
     if(id==$scope.currentId)
       return ' stopli';
