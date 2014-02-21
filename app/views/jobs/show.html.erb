@@ -11,7 +11,7 @@
                 var scene = new THREE.Scene();
                 var model=null;
               </script>
-              <input name="" id='job_name' type="text" class="divinput"  placeholder="请输入你当时留下的邮箱地址" ng-model="name"/>
+              <input name="" id='job_name' type="text" class="divinput"  placeholder="请输入你当时留下的邮箱地址" ng-model="name" ng-keyup="nameOnKeyup($event.keyCode)"/>
               <input name="" type="button" class="input-btn"  value="搜索" ng-click="queriedName=name"/>
             </div>
           </div>

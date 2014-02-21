@@ -2,6 +2,10 @@ angular.module('job',[]).controller('jobId',function($scope,$http){
   $scope.queryStatus={text:''};
   $scope.recommendations=[{name:'ccc'},{name:'777'}];
   $scope.queriedName=$scope.recommendations[Math.floor($scope.recommendations.length*Math.random())].name;
+  $scope.nameOnKeyup=function(key){
+    if(key==13)
+      $scope.queriedName=$scope.name;
+  }
   $scope.$watch('queriedName',function(){
     $http.post('/job/'+$scope.queriedName+'.json','').success(function(data){
       $scope.currentObj=data[0];
