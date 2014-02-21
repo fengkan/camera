@@ -4,7 +4,7 @@ Camera::Application.routes.draw do
 	  collection do
       # for convenience of development
 	    get :confirm, :close, :place
-      post :pay
+      post :confirm, :pay
 	    get :ali_callback
 	    post :ali_callback
 	  end 
@@ -17,20 +17,14 @@ Camera::Application.routes.draw do
 			post :login, :forgetpwd, :newpwd
 		end
 	end
-	
-    match '/login' => 'accounts#login'
-    match '/logout' => 'accounts#logout'
 
-#  devise_for :users
-    match 'orders/close/:id' => 'orders#close'
+  match '/login' => 'accounts#login'
+  match '/logout' => 'accounts#logout'
 
-    match 'order/confirm' => 'orders#confirm'
-    match 'orders/confirm/:id' => 'orders#confirm'
-    match 'order/place' => 'orders#place'
-    match 'job/show' => 'jobs#show'
-    match 'job/:id' => 'jobs#query'
-    match 'faq' => 'misc#faq'
-    match 'contact_us' => 'misc#contactus'
+  match 'job/show' => 'jobs#show'
+  match 'job/:id' => 'jobs#query'
+  match 'faq' => 'misc#faq'
+  match 'contact_us' => 'misc#contactus'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

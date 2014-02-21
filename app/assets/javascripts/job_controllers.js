@@ -7,7 +7,7 @@ angular.module('job',[]).controller('jobId',function($scope,$http){
       $scope.queriedName=$scope.name;
   }
   $scope.$watch('queriedName',function(){
-    $http.post('/job/'+$scope.queriedName+'.json','').success(function(data){
+    $http.get('/job/'+$scope.queriedName+'.json','').success(function(data){
       $scope.currentObj=data[0];
       $scope.queryStatus.text=$scope.currentObj.name+' 的3D照片：';
     }).error(function(data){
