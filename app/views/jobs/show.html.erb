@@ -68,7 +68,7 @@
   function logger(){
     console.log(123);
   }
-  var renderer = new THREE.WebGLRenderer({canvas:document.getElementById('viewport')});
+  var renderer = new THREE.WebGLRenderer({canvas:document.getElementById('viewport'),alpha:true});
   renderer.setSize( 502,532 );
   var ambient_light = new THREE.AmbientLight( 0xffffff );
   scene.add( ambient_light );
