@@ -34,9 +34,9 @@
           <div class="Viewright-title">样板照片1</div>
           <div class="Viewrightin">
             <div class="divimgs"><canvas style="height:532px;width:502px" id="viewport"></canvas></div>
-            <a id="download" ng-attr-href="/obj/{{currentId}}/{{currentId}}.zip" target="_blank" class="down-3d">下载3d模型</a>
+            <a id="download" ng-attr-href="/obj/{{currentObj.name}}/{{currentObj.name}}.zip" target="_blank" class="down-3d">下载3d模型</a>
             <div class="Print-div">
-            <a id="print" href="/order/place?job_id={{currentId}}">
+            <a id="print" href="/order/place?job_id={{currentObj.id}}">
             <img src="/images/numlist123-23.jpg"/><span>打印此模型</span>
             <p>( 5cm规格只要￥128 )</p>
              </a>
