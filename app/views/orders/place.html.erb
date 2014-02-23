@@ -4,6 +4,7 @@
 <div class="padding-top68 indextbody">
     <div class="container">
       <div class="indent-warp">
+	      <div class="notification n_failure visible-xs visible-sm">您可能正在平板或者手机上浏览我们的网站，建议您在桌面电脑上继续操作</div>
 	      <% if !flash[:alert].blank? %>
 	      <div class="notification n_failure"><%= flash[:alert]%></div>
 	      <% end %>
@@ -81,8 +82,9 @@
                   </div>
               </div>
           <div class="col-sm-4">
-            <div class="indent-login" style="cursor:pointer">
-              <a>还没有账户？点这里注册</a>
+            <div class="indent-place " style="cursor:pointer">
+              <a href="/logout?return_to=<%= CGI.escape('/orders/place?job_id=' + @job_id) %>">您不是<%= current_user.email%>？<br>
+              点击这里注册新用户</a>
             </div>
           </div>
 
@@ -126,8 +128,8 @@
                   </div>
               </div>
               <div class="col-sm-4">
-                <div class="indent-login" style="cursor:pointer">
-                  <a href="/accounts/login">已经有了账户？点这里登录</a>
+                <div class="indent-place" style="cursor:pointer">
+                  <a href="/accounts/login?return_to=<%= CGI.escape('/orders/place?job_id=' + @job_id) %>">已经有了账户？点这里登入</a>
                 </div>
               </div>
           <% end %>
@@ -137,8 +139,8 @@
                   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered indent-price">
                       <tr>
                           <th>名称</th>
-                          <th width="15%" class="text-center">&nbsp;</th>
-                          <th width="15%" class="text-center">价格</th>
+                          <th width="15%" class="text-center">数量</th>
+                          <th width="15%" class="text-center">单价</th>
                       </tr>
                       <tr>
                           <td><input type="hidden" id="job_id" name="job_id" value="<%=@job_id%>"/><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%= Settings.PRODUCTS[@job_style]["product_name"] %></span></td>
@@ -152,8 +154,8 @@
                                   $('#span_plus').css('cursor','not-allowed');
                                   $('#span_minus').css('cursor','auto');
                                 }
-                                else if(v<=0){
-                                  v=0;
+                                else if(v<=1){
+                                  v=1;
                                   $('#span_plus').css('cursor','auto');
                                   $('#span_minus').css('cursor','not-allowed');
                                 }
@@ -166,7 +168,7 @@
                               }
                             </script>
                             <span class="span-jian" id="span_minus" onclick="changeCount(-1)"></span>
-                            <input id="count" name="count" type="text"  class="span-input" value="10" onchange="changeCount(0)"/>
+                            <input id="count" name="count" type="text"  class="span-input" value="1" onchange="changeCount(0)"/>
                             <span class="span-jia" id="span_plus" onclick="changeCount(1)"></span>
                           </div>
                         </td>
@@ -180,7 +182,7 @@
                       </tr>
                   </table>
                   <table class="indent-inputin"><tr><td><span id="job_id_validation_img"></span></td><td id="job_id_validation"></td></tr></table>
-                  <p class="text-right">共计：<span id="total" class="indent-total"> <%= Settings.PRODUCTS[@job_style]["product_price"]*10 %> </span>元</p>
+                  <p class="text-right">共计：<span id="total" class="indent-total"> <%= Settings.PRODUCTS[@job_style]["product_price"] %> </span>元</p>
                   <div class="text-center"> <button type="submit" class="btn btn-primary btn-lg indent-btn2">确认订单</button>
                   </div>
               </div>

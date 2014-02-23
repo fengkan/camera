@@ -7,6 +7,7 @@ class AccountsController < ApplicationController
   include ApplicationHelper
 
   def login
+  	session[:return_to] = params[:return_to] if !params[:return_to].blank?
     return unless request.post?
     self.current_user = User.authenticate(params[:login_email], params[:login_password])
     if logged_in?
@@ -26,6 +27,7 @@ class AccountsController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
+  	session[:return_to] = params[:return_to] if !params[:return_to].blank?
     redirect_back_or_default(:controller => '/misc', :action => 'index')
 	end
 	

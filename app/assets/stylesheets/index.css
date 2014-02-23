@@ -350,6 +350,19 @@ body {
 	color: #6d7276;
 	font-size: 18px;
 }
+.indent-place {
+	border: 1px solid #afbac0;
+	width: 296px;
+	padding: 10px 5px;
+	margin-top: 20px;
+}
+.indent-place a {
+	display: block;
+	text-align: center;
+	color: #6d7276;
+	font-size: 18px;
+}
+
 .fn18 {
 	font-size: 18px;
 }
@@ -586,7 +599,7 @@ body {
 .Viewleftinput .input-btn {
 	background: #78badd url(../images/numlist123-25.jpg) no-repeat center center;
 	width: 34px;
-	height: 36px;
+	height: 35px;
 	cursor: pointer;
 	overflow: hidden;
 	line-height: 36em;

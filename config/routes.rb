@@ -17,14 +17,16 @@ Camera::Application.routes.draw do
 			post :login, :forgetpwd, :newpwd
 		end
 	end
+	
+    match '/login' => 'accounts#login'
+    match '/logout' => 'accounts#logout'
 
-  match '/login' => 'accounts#login'
-  match '/logout' => 'accounts#logout'
-
-  match 'job/show' => 'jobs#show'
-  match 'job/:id' => 'jobs#query'
-  match 'faq' => 'misc#faq'
-  match 'contact_us' => 'misc#contactus'
+    match 'orders/close/:id' => 'orders#close'
+    match 'orders/confirm/:id' => 'orders#confirm'
+    match 'job/show' => 'jobs#show'
+    match 'job/:id' => 'jobs#query'
+    match 'faq' => 'misc#faq'
+    match 'contact_us' => 'misc#contactus'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
