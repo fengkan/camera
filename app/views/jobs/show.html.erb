@@ -13,11 +13,13 @@
   }
   .divcanvas div{
     position:absolute;
+    background:url('/images/loading.gif') no-repeat center;
     width:100%;
     height:100%;
     top:0;
     line-height:572px;
     text-align:center;
+    color:white;
   }
 </style>
 <%end%>
@@ -85,7 +87,6 @@
   controls.panSpeed = 0.8;
   controls.dynamicDampingFactor = 0.3;
   var loader = new THREE.OBJMTLLoader();
-  $('#loading').hide();
 
   var renderer = new THREE.WebGLRenderer({canvas:document.getElementById('viewport'),alpha:true});
   renderer.setSize( viewport.innerWidth(),viewport.innerHeight() );
