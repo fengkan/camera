@@ -1,7 +1,7 @@
 angular.module('job',[]).controller('jobId',function($scope,$http){
   $scope.queryStatus={text:''};
   $scope.recommendations=[{name:'ccc'},{name:'777'}];
-  $scope.queriedName=$scope.recommendations[Math.floor($scope.recommendations.length*Math.random())].name;
+  $scope.queriedName=job_id?job_id:$scope.recommendations[Math.floor($scope.recommendations.length*Math.random())].name;
   $scope.nameOnKeyup=function(key){
     if(key==13)
       $scope.queriedName=$scope.name;

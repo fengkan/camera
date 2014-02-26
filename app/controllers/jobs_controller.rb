@@ -1,6 +1,10 @@
 class JobsController < ApplicationController
     def show
-        
+      if(params[:job_id])
+        @job_id="'".html_safe+params[:job_id]+"'".html_safe
+      else
+        @job_id='null'
+      end
     end
   def query
     @name=params[:id]
