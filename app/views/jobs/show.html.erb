@@ -54,19 +54,13 @@
 </div>
 <script type="text/javascript">
   var camera = new THREE.PerspectiveCamera( 75, 502 / 532, 0.1, 1000 );
-  camera.position.z = 5;
+  camera.position.z = 3;
   var controls = new THREE.TrackballControls( camera,document.getElementById('viewport') );
   controls.rotateSpeed = 0.8;
   controls.zoomSpeed = 1.2;
   controls.panSpeed = 0.8;
-  controls.noZoom = false;
-  controls.noPan = false;
-  controls.staticMoving = false;
   controls.dynamicDampingFactor = 0.3;
 
-  function logger(){
-    console.log(123);
-  }
   var renderer = new THREE.WebGLRenderer({canvas:document.getElementById('viewport'),alpha:true});
   renderer.setSize( 502,532 );
   var ambient_light = new THREE.AmbientLight( 0xffffff );
