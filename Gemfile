@@ -42,3 +42,4 @@ gem "mysql2", '0.3.11'
 gem 'simple_form'
 gem 'rails_config'
 gem 'resque', :require => "resque/server"
+gem "mini_magick"
