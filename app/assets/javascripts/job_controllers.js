@@ -18,8 +18,10 @@ angular.module('job',[]).controller('jobId',function($scope,$http){
     });
   });
   $scope.$watch('currentObj',function(){
-    if(model)
+    if(model){
       scene.remove(model);
+      controls.reset();
+    }
     if(!$scope.currentObj)
       return;
     var newId=$scope.currentObj.name;
