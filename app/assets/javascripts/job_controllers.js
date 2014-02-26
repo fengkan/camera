@@ -18,6 +18,7 @@ angular.module('job',[]).controller('jobId',function($scope,$http){
     });
   });
   $scope.$watch('currentObj',function(){
+    $('#loading').show();
     if(model){
       scene.remove(model);
       controls.reset();
@@ -25,10 +26,10 @@ angular.module('job',[]).controller('jobId',function($scope,$http){
     if(!$scope.currentObj)
       return;
     var newId=$scope.currentObj.name;
-    var loader = new THREE.OBJMTLLoader();
     loader.load( '/obj/'+newId+'/'+newId+'.obj', '/obj/'+newId+'/'+newId+'.mtl', function ( object ) {
       model=object;
       scene.add( model );
+      $('#loading').hide();
     },true );
   });
   $scope.ifStopLi=function(name){
