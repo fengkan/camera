@@ -92,7 +92,7 @@ class OrdersController < ApplicationController
     
   def place
     @job_id = params[:job_id]
-    if Job.exists?(@job_id)
+    if Job.find_by_name(@job_id)
       @job_style = 0
       @shipments = current_user.shipments if logged_in?
     else
