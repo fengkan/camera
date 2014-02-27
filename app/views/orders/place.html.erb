@@ -28,11 +28,13 @@
                     <script type="text/javascript">
                     function checkMode(){
                       if($('input:radio[value=new]:checked').length){
+                      	$("#login-address-form").slideDown();
                         $('input[name=name]').parsley('addConstraint',{required:true});
                         $('input[name=phone]').parsley('addConstraint',{required:true,regexp:'1\\d{10}'});
                         $('input[name=address]').parsley('addConstraint',{required:true});
                       }
                       else{
+                      	$("#login-address-form").slideUp();
                         $('input[name=name]').parsley('removeConstraint','required');
                         $('input[name=name]').next().html('');
                         $('input[name=phone]').parsley('removeConstraint','required');
@@ -49,14 +51,15 @@
                     <div class="login-sites">
                       <input type="radio" name="shipment_id" id="shipment_<%= shipment.id %>" value="<%= shipment.id%>" onchange="checkMode()" parsley-required="true" parsley-error-container="#shipment_id_validation" parsley-required-message="必须至少选择一项">
                       <div class="div-site">
-                        <label for="shipment_<%= shipment.id %>"><%= shipment.mixed_str %></label>
+                        <label for="shipment_<%= shipment.id %>"><%= shipment.name %><br><%= shipment.phone %><br><%= shipment.address %></label>
                       </div>
                     </div>
                     <% end %>
                     <div class="login-sites">
                       <input type="radio" name="shipment_id" id="shipment_new" value="new" onchange="checkMode()">
-                      <div class="login-addsite"><label for="shipment_new">你需要一个新地址？请在下面输入：</label></div>
+                      <div class="login-addsite"><label for="shipment_new">添加一个新的地址</label></div>
                     </div>
+                    <div id="login-address-form" style="display:none;">
                     <div class="indent-inputin">
                       <input type="text" class=" indent-input2" name="name"  placeholder="姓名" onclick="$('#shipment_new').click();" parsley-error-container="#name_validation" parsley-validation-minlength="1" parsley-trigger="keyup" parsley-required-message="请输入你的姓名">
                       <span></span>
@@ -79,6 +82,7 @@
                           $('#shipment_new').click();
                       });
                     </script>
+                  </div>
                   </div>
               </div>
           <div class="col-sm-4">

@@ -526,12 +526,10 @@ body {
   margin:0;
 }
 .login-addsite {
-	border-bottom: 1px dashed #6d7276;
 	color: #6d7276;
 	padding: 0 10px 5px;
-	margin-bottom: 20px;
 	width: 380px;
-    float:left;
+  float:left;
 }
 /*------------订单列表---------*/
 .orderlist-top {
