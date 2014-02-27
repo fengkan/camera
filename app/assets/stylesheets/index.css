@@ -926,4 +926,7 @@ body {
   td.hidden-sm {
     display: block !important;
   }
-	}
+}
+.carousel {
+	margin-bottom: 40px;
+}
