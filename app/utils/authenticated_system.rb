@@ -70,7 +70,7 @@ module AuthenticatedSystem
           store_location
 		      flash[:notice_class] = 'n_failure'
           flash[:notice] = "您需要先登入才能完成刚才的操作"
-          redirect_to :controller => '/accounts', :action => 'login'
+          redirect_to '/login'
         end
         accepts.xml do
           headers["Status"]           = "Unauthorized"
