@@ -81,67 +81,12 @@ body {
  padding-top: 0;
 }
 }
-/* Carousel base class */
-.carousel {
-	height: 607px;
-	margin-bottom: 60px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-	z-index: 10;
-}
-/* Declare heights because of positioning of img element */
-.carousel .item {
-	height: 607px;
-}
-.carousel-inner > .item > img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	min-width: 100%;
-	height: 607px;
-}
+
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
 	background-color: #f4fbff
 }
 .navbar-inverse .navbar-toggle .icon-bar {
 	background-color: #78badd
-}
- @media (max-width:1680px) {
-.carousel {
- height: 531px;
- margin-bottom: 50px;
-}
-.carousel .item {
- height: 531px;
-}
-.carousel-inner > .item > img {
- height: 531px;
-}
-}
- @media (max-width:1440px) {
-.carousel {
- height: 455px;
- margin-bottom: 40px;
-}
-.carousel .item {
- height: 455px;
-}
-.carousel-inner > .item > img {
- height: 455px;
-}
-}
- @media (max-width:1280px) {
-.carousel {
- height: 405px;
- margin-bottom: 30px;
-}
-.carousel .item {
- height: 405px;
-}
-.carousel-inner > .item > img {
- height: 405px;
-}
 }
 .carousel-indicators li {
 	background: url(../images/numlist123-2.png) no-repeat;
@@ -261,16 +206,6 @@ body {
   
 }
 @media screen and (max-width: 768px) and (min-width:240px) {
-.carousel {
- height: 202px;
- margin-bottom: 15px;
-}
-.carousel .item {
- height: 202px;
-}
-.carousel-inner > .item > img {
- height: 202px;
-}
 .index-imgslast, .index-imgs {
  padding: 15px 0;
 }
@@ -981,3 +916,14 @@ body {
 .index-imgs p, .index-imgslast p{
 	padding:0 20px;
 }
+@media (min-width: 768px) and (max-width: 991px){
+	.navbar-fixednav li {
+	padding: 0 5px 0;
+}
+ .hidden-sm,
+  tr.hidden-sm,
+  th.hidden-sm,
+  td.hidden-sm {
+    display: block !important;
+  }
+	}
