@@ -47,7 +47,7 @@
             });
           }
         </script>
-        <li class="li-login"><div><a href="#"><%=current_user.email%></a><a href="/accounts/logout">退出</a></div></li>
+        <li class="li-login"><div><a class="login-name"><%=current_user.email%></a><a href="/accounts/logout">退出</a></div></li>
         <% else %>
         <li><a href="/login">登入</a></li>
         <% end %>

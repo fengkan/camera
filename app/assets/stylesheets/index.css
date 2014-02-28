@@ -920,6 +920,9 @@ body {
 	.navbar-fixednav li {
 	padding: 0 5px 0;
 }
+.navbar-fixednav .li-login a.login-name {
+	max-width:71px;
+}
  .hidden-sm,
   tr.hidden-sm,
   th.hidden-sm,
@@ -929,4 +932,7 @@ body {
 }
 .carousel {
 	margin-bottom: 40px;
+}
+a.login-name {
+	cursor: default;
 }
