@@ -45,7 +45,7 @@
             <p class="padding-b5 padding-120">来看看大家拍的3D照片吧！</p>
             <div class="Viewleft-li">
               <ul>
-                <li ng-repeat="job in recommendations" class="col-lg-4{{ifStopLi(job.name)}}"><a href="" ng-click="$parent.queriedName=job.name"><img src="/images/numlist123-20.jpg"/></a></li>
+                <li ng-repeat="job in recommendations" ng-attr-class="col-lg-4{{ifStopLi(job.name)}}"><a href="" ng-click="$parent.queriedName=job.name"><img src="/images/numlist123-20.jpg"/></a></li>
               </ul>
             </div>
           </div>
@@ -58,7 +58,7 @@
             <div class="divcanvas"><canvas id="viewport"></canvas><div id="loading">载入中</div></div>
             <a id="download" ng-attr-href="/obj/{{currentObj.name}}/{{currentObj.name}}.zip" target="_blank" class="down-3d">下载3d模型</a>
             <div class="Print-div">
-            <a id="print" href="/orders/place?job_id={{currentObj.name}}">
+            <a id="print" ng-attr-href="/orders/place?job_id={{currentObj.name}}">
             <img src="/images/numlist123-23.jpg"/><span>打印此模型</span>
             <p>( 5cm规格只要￥128 )</p>
              </a>
