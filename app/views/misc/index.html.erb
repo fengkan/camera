@@ -4,6 +4,7 @@
         background:#fff;
     }
 </style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=OePgGL9CsSlwxp8Gjq9XIlrG"></script>
 <%end%>
 <div class="padding-top68">
 <div id="myCarousel" data-ride="carousel" class="carousel slide"> 
@@ -39,7 +40,7 @@
     <div class="index-text">我们还能帮您把模型打印出来，让您拥有一个 mini 的自己！</div>
     <div class="index-text"><img src="images/numlist123-7.jpg" width="100%" /></div>
     <!--地图-->
-    <div class="index-map"> <img src="images/numlist123-8.jpg" width="100%" />
+    <div class="index-map"> <div style="height:600px" id="map-container"></div>
       <div class="index-maptext"></div>
       <div class="index-mapin">
         <div class="divtitle">你也想体验一下？<br />
@@ -81,3 +82,16 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+// 百度地图API功能
+var map = new BMap.Map("map-container");                        // 创建Map实例
+map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);     // 初始化地图,设置中心点坐标和地图级别
+map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+</script>
