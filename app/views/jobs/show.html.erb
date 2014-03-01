@@ -45,7 +45,7 @@
             <p class="padding-b5 padding-120">来看看大家拍的3D照片吧！</p>
             <div class="Viewleft-li">
               <ul>
-                <li ng-repeat="job in recommendations" ng-attr-class="col-lg-4{{ifStopLi(job.name)}}"><a href="" ng-click="$parent.queriedName=job.name"><img src="/images/numlist123-20.jpg"/></a></li>
+                <li ng-repeat="job in recommendations" ng-attr-class="col-lg-4{{ifStopLi(job.name)}}"><a href="" ng-click="$parent.queriedName=job.name"><img ng-src='/obj/{{job.name}}/{{job.name}}_t_s.jpg'/></a></li>
               </ul>
             </div>
           </div>
