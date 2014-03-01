@@ -148,7 +148,7 @@
                           <th width="15%" class="text-center">单价</th>
                       </tr>
                       <tr>
-                          <td><input type="hidden" id="job_id" name="job_id" value="<%=@job_id%>"/><img src="/images/numlist123-20.jpg" width="80" height="80" /><span class="names">品名：<%= Settings.PRODUCTS[@job_style]["product_name"] %></span></td>
+                          <td><input type="hidden" id="job_id" name="job_id" value="<%=@job_id%>"/><img src="/obj/<%= @job.name %>/<%= @job.name %>_t_s.jpg" /><span class="names">品名：<%= Settings.PRODUCTS[@job_style]["product_name"] %></span></td>
                         <td>
                           <div class="alipay-divs">
                             <script type="text/javascript">

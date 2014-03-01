@@ -16,14 +16,15 @@
 			</tr>
 			<% @orders.each do |order| %>
 		  <tr>
-		    <td><img src="/images/numlist123-20.jpg" /></td>
+		  	<% job = Job.find(order.order_items[0].job_id)%>
+		    <td><img src="/obj/<%= job.name %>/<%= job.name %>_t_s.jpg" /></td>
 		    <td><a href="/orders/<%= order.md5.to_s %>"><%= Settings.PRODUCTS[order.order_items[0].job_style.to_i]["product_name"]%></a></td>
 	      <td>
       	<% if order.status == 'new' %>
           <%= ('<span class="orderlist-state4"><a href="/orders/confirm/' + order.md5.to_s + '">去付款</a></span>').html_safe %>
         <% else
 				order_class=order.status_class
-				order_status=order.readable_status
+				order_status=Order.readable_status(order.status)
 				%>
         	<span class="<%=order_class%>"><%=order_status%></span>
       	<% end %>

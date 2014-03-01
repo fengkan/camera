@@ -18,8 +18,12 @@ class Order < ActiveRecord::Base
   	self.md5 = random_word(6)
   end
   
-  def readable_status
+  def self.readable_status(status)
   	case status
+		when 'new'
+			return '下单'
+		when 'paid'
+			return '已付款'
 		when 'pending'
 			return "等待制作"
 		when 'making'

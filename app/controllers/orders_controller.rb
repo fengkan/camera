@@ -27,6 +27,8 @@ class OrdersController < ApplicationController
     		authenticate_user!
   		end
   	end
+  	
+  	@job = Job.find(@order.order_items[0].job_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -92,7 +94,8 @@ class OrdersController < ApplicationController
     
   def place
     @job_id = params[:job_id]
-    if Job.find_by_name(@job_id)
+    @job = Job.find_by_name(@job_id)
+    if @job
       @job_style = 0
       @shipments = current_user.shipments if logged_in?
     else

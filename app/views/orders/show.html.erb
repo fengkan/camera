@@ -1,65 +1,42 @@
+<% content_for :title do %>
+<%= "订单详情 - " + Settings.TAGLINE %>
+<% end %>
 <div class="padding-top68 indextbody">
   <div class="container">
-     <div class="indent-warp">
-     <div class="orderlist-top fn18">订单详情</div>
-     <div class="padding-top30 padding-110">
-     <div class="col-md-4"><img src="/images/numlist123-27.jpg" style="margin:0 20px 20px 0; width:100%; max-width:320px;"/></div>
-
-     <div class="col-md-8">
-   
-     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="lineitem-table">
-  <tr>
-    <td class="td-leftbg">品名</td>
-    <td><%=@order.order_items[0].job_style %></td>
-  </tr>
-  <tr>
-    <td class="td-leftbg">订单号</td>
-    <td><%=@order.id%></td>
-  </tr>
-  <tr>
-    <td class="td-leftbg">价格</td>
-    <td><%=@order.order_items[0].price %>元</td>
-  </tr>
-  <tr>
-    <td class="td-leftbg">付款日期</td>
-    <td>2013-12-23</td>
-  </tr>
-  <tr>
-    <td class="td-leftbg">送货地址</td>
-    <td><%=@order.shipment.address %></td>
-  </tr>
-  <tr>
-    <td class="td-leftbg">联系电话</td>
-    <td><%=@order.shipment.phone %></td>
-  </tr>
-  <tr>
-    <td class="td-leftbg">状态</td>
-    <td><%=
-        case @order.status
-            when 'new'
-            '未付款'.html_safe
-            when 'pending'
-            '等待制作'.html_safe
-            when 'making'
-            '制作中...'.html_safe
-            when 'delivering'
-            '配送中'.html_safe
-            when 'received'
-            '已签收'.html_safe
-            else
-            ''.html_safe
-        end
-        %></td>
-  </tr>
-  <tr>
-    <td class="td-leftbg">快递号</td>
-    <td><%=@order.logistics %></td>
-  </tr>
-
-</table>
-
-     </div>
-</div>
-     </div>
+		<div class="indent-warp">
+		<div class="orderlist-top fn18">订单详情</div>
+			<div class="padding-top30 padding-110">
+			<div class="col-md-4"><img class="thumb_in_detail" src="/obj/<%= @job.name %>/<%= @job.name %>_t_l.jpg"/></div>
+				<div class="col-md-8">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="lineitem-table">
+					  <tr>
+					    <td class="td-leftbg">品名</td>
+					    <td><%= Settings.PRODUCTS[@order.order_items[0].job_style.to_i]["product_name"] %></td>
+					  </tr>
+					  <tr>
+					    <td class="td-leftbg">金额</td>
+					    <td><%=@order.total_price %>元</td>
+					  </tr>
+					  <tr>
+					    <td class="td-leftbg">收货信息</td>
+					    <td><%=@order.shipment.name %><br><%=@order.shipment.phone %><br><%=@order.shipment.address %></td>
+					  </tr>
+					  <tr>
+					    <td class="td-leftbg">动态</td>
+					    <td>
+								<table class="table table-hover" style="font-size:12px;margin-bottom:0px;">  
+								<% for oh in @order.order_histories %>
+									<tr><td><%= beautify_time(oh.created_at) %></td><td><%= Order.readable_status(oh.status) %></td></tr>
+								<% end %>
+								</table></td>
+					  </tr>
+					  <tr>
+					    <td class="td-leftbg">快递号</td>
+					    <td><%=@order.logistics %></td>
+					  </tr>
+					</table>
+				</div>
+			</div>
+		</div>
   </div>
 </div>
