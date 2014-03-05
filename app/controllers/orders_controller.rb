@@ -126,7 +126,8 @@ class OrdersController < ApplicationController
 	    end
 	
 	    @order = current_user.orders.build(:status => "new")
-	    order_item = @order.order_items.build(:job_id => params[:job_id], :job_amount => params[:count], :job_style => job_style, :price => params[:count].to_i * Settings.PRODUCTS[job_style]["product_price"].to_f)
+	    @job = Job.find_by_name(params[:job_id])
+	    order_item = @order.order_items.build(:job_id => @job.id, :job_amount => params[:count], :job_style => job_style, :price => params[:count].to_i * Settings.PRODUCTS[job_style]["product_price"].to_f)
 	
 	    if !params[:name].blank?
 	      shipment = current_user.shipments.build(:name => params[:name], :address => params[:address], :phone => params[:phone])
