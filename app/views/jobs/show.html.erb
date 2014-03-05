@@ -86,6 +86,7 @@
   controls.panSpeed = 0.8;
   controls.dynamicDampingFactor = 0.3;
   controls.maxDistance=42;
+  controls.noRoll = true;
   var loader = new THREE.OBJMTLLoader();
 
   var renderer =(function () {
@@ -107,4 +108,12 @@
     renderer.render(scene, camera);
   };
   render();
+  
+  window.addEventListener( 'resize', function(){
+    camera.aspect = viewport.innerWidth() / viewport.innerHeight();
+    camera.updateProjectionMatrix();
+    renderer.setSize( viewport.innerWidth() , viewport.innerHeight() );
+    controls.handleResize();
+  }, false );
+  
 </script>
