@@ -65,19 +65,10 @@ module AuthenticatedSystem
     # to access the requested action.  For example, a popup window might
     # simply close itself.
     def access_denied
-      respond_to do |accepts|
-        accepts.html do
-          store_location
-		      flash[:notice_class] = 'n_failure'
-          flash[:notice] = "您需要先登入才能完成刚才的操作"
-          redirect_to '/login'
-        end
-        accepts.xml do
-          headers["Status"]           = "Unauthorized"
-          headers["WWW-Authenticate"] = %(Basic realm="Web Password")
-          render :text => "Could't authenticate you", :status => '401 Unauthorized'
-        end
-      end
+      store_location
+      flash[:notice_class] = 'n_failure'
+      flash[:notice] = "您需要先登入才能完成刚才的操作"
+      redirect_to '/login'
       false
     end  
     
@@ -85,7 +76,7 @@ module AuthenticatedSystem
     #
     # We can return to this location by calling #redirect_back_or_default.
     def store_location
-      session[:return_to] = request.request_uri
+      session[:return_to] = request.fullpath 
     end
     
     # Redirect to the URI stored by the most recent store_location call or
@@ -113,7 +104,7 @@ module AuthenticatedSystem
         self.current_user = user
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
 #				redirect_to :controller => 'unit', :action => 'index'
-				redirect_to request.request_uri
+				redirect_to request.fullpath
       end
     end
 
