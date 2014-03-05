@@ -88,7 +88,16 @@
   controls.maxDistance=42;
   var loader = new THREE.OBJMTLLoader();
 
-  var renderer = new THREE.WebGLRenderer({canvas:document.getElementById('viewport'),alpha:true});
+  var renderer =(function () {
+    try {
+      var canvas = document.createElement('canvas');
+        return !!window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
+    } catch (e) {
+        return false;
+    }
+  })()?
+      new THREE.WebGLRenderer({canvas:document.getElementById('viewport'),alpha:true}):
+      new THREE.CanvasRenderer({canvas:document.getElementById('viewport'),alpha:true});
   renderer.setSize( viewport.innerWidth(),viewport.innerHeight() );
   var ambient_light = new THREE.AmbientLight( 0xffffff );
   scene.add( ambient_light );
