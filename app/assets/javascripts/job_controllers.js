@@ -1,7 +1,9 @@
 angular.module('job',[]).controller('jobId',function($scope,$http){
   $scope.queryStatus={text:'3D照片：'};
-  $scope.recommendations=[{name:'8ac'},{name:'806'},{name:'829'},{name:'897'},{name:'a1e'},{name:'a45'},{name:'e9c'},{name:'eb0'},{name:'fc1'}];
-  $scope.queriedName=job_id?job_id:$scope.recommendations[Math.floor($scope.recommendations.length*Math.random())].name;
+  $http.get('/jsons/recommendations.json').success(function(data) {
+    $scope.recommendations = data;
+    $scope.queriedName=job_id?job_id:$scope.recommendations[Math.floor($scope.recommendations.length*Math.random())].name;
+  });
   $scope.nameOnKeyup=function(key){
     if(key==13)
       $scope.queriedName=$scope.name;
