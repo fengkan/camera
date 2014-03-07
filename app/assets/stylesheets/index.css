@@ -152,6 +152,11 @@ h1, h2, h3, h4 {
 .index-map {
 	position: relative;
 }
+.index-map:after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+}
 .index-maptext {
 	position: absolute;
 	background: url(../images/numlist123-3.png) no-repeat;
@@ -161,11 +166,6 @@ h1, h2, h3, h4 {
 	height: 25px;
 	display: block;
 	z-index: 10;
-}
-.index-mapin .divtitle {
-	font-size: 24px;
-	line-height: 1.2;
-	padding-bottom: 15px;
 }
 .index-mapin {
 	background: #f4112c;
@@ -178,6 +178,7 @@ h1, h2, h3, h4 {
 	top: 0;
 	padding: 20px 25px;
 	color: #fff;
+  width:245px;
 }
 .index-faq {
 	background: url(../images/numlist123-9.jpg) repeat-x center center;
