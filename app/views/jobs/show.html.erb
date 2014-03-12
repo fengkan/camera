@@ -23,8 +23,13 @@
   }
 </style>
 <%end%>
-<%= javascript_include_tag "three.min","OBJLoader","MTLLoader","OBJMTLLoader","angular.min","job_controllers","TrackballControls","jsc3d","jsc3d.touch"%>
+<%= javascript_include_tag "three.min","OBJLoader","MTLLoader","OBJMTLLoader","angular.min","job_controllers","TrackballControls","jsc3d.touch"%>
 <div class="padding-top68 indextbody" ng-app="job">
+<%if browser.ie6?||browser.ie7?||browser.ie8?%>
+  <%= javascript_include_tag "jsc3d_ie"%>
+<%else%>
+  <%= javascript_include_tag "jsc3d"%>
+<%end%>
   <div class="container margin-top30" ng-controller="jobId">
     <div class="row">
       <div class="col-md-4">

@@ -43,3 +43,4 @@ gem 'simple_form'
 gem 'rails_config'
 gem 'resque', :require => "resque/server"
 gem "mini_magick"
+gem 'browser'
