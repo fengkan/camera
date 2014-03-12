@@ -23,7 +23,7 @@
   }
 </style>
 <%end%>
-<%= javascript_include_tag "three.min","OBJLoader","MTLLoader","OBJMTLLoader","angular.min","job_controllers","TrackballControls"%>
+<%= javascript_include_tag "three.min","OBJLoader","MTLLoader","OBJMTLLoader","angular.min","job_controllers","TrackballControls","jsc3d","jsc3d.touch"%>
 <div class="padding-top68 indextbody" ng-app="job">
   <div class="container margin-top30" ng-controller="jobId">
     <div class="row">
@@ -78,6 +78,15 @@
 <script type="text/javascript">
   var job_id=<%=@job_id%>;
   var viewport=$('#viewport');
+  var webGL=(function () {
+    try {
+      var testCanvas = document.createElement('canvas');
+        return !!window.WebGLRenderingContext && (testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl'));
+    } catch (e) {
+        return false;
+    }
+  })();
+  if(webGL){
   var camera = new THREE.PerspectiveCamera( 75, viewport.innerWidth() / viewport.innerHeight(), 0.1, 1000 );
   camera.position.z = 3;
   var controls = new THREE.TrackballControls( camera,document.getElementById('viewport') );
@@ -89,16 +98,7 @@
   controls.noRoll = true;
   var loader = new THREE.OBJMTLLoader();
 
-  var renderer =(function () {
-    try {
-      var canvas = document.createElement('canvas');
-        return !!window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
-    } catch (e) {
-        return false;
-    }
-  })()?
-      new THREE.WebGLRenderer({canvas:document.getElementById('viewport'),alpha:true}):
-      new THREE.CanvasRenderer({canvas:document.getElementById('viewport'),alpha:true});
+  var renderer =new THREE.WebGLRenderer({canvas:document.getElementById('viewport'),alpha:true});
   renderer.setSize( viewport.innerWidth(),viewport.innerHeight() );
   var ambient_light = new THREE.AmbientLight( 0xffffff );
   scene.add( ambient_light );
@@ -115,5 +115,17 @@
     renderer.setSize( viewport.innerWidth() , viewport.innerHeight() );
     controls.handleResize();
   }, false );
-  
+  }
+  else{
+	var canvas = document.getElementById('viewport');
+	var viewer = new JSC3D.Viewer(canvas);
+    canvas.width=canvas.clientWidth;
+    canvas.height=canvas.clientHeight;
+	viewer.setParameter('BackgroundColor1', '#394a53');
+	viewer.setParameter('BackgroundColor2', '#394a53');
+	viewer.setParameter('RenderMode', 'texturesmooth');
+	viewer.setParameter('MipMapping', 'on');
+    viewer.setParameter('Definition','high');
+    viewer.init();
+  }
 </script>

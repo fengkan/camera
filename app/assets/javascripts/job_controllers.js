@@ -21,18 +21,25 @@ angular.module('job',[]).controller('jobId',function($scope,$http){
   });
   $scope.$watch('currentObj',function(){
     $('#loading').show();
-    if(model){
-      scene.remove(model);
-      controls.reset();
+    if(webGL){
+      if(model){
+        scene.remove(model);
+        controls.reset();
+      }
+      if(!$scope.currentObj)
+        return;
+      var newId=$scope.currentObj.name;
+      loader.load( '/obj/'+newId+'/'+newId+'.obj', '/obj/'+newId+'/'+newId+'.mtl', function ( object ) {
+        model=object;
+        scene.add( model );
+        $('#loading').hide();
+      },true );
     }
-    if(!$scope.currentObj)
-      return;
-    var newId=$scope.currentObj.name;
-    loader.load( '/obj/'+newId+'/'+newId+'.obj', '/obj/'+newId+'/'+newId+'.mtl', function ( object ) {
-      model=object;
-      scene.add( model );
+    else{
       $('#loading').hide();
-    },true );
+      viewer.replaceSceneFromUrl('/obj/'+$scope.currentObj.name+'/'+$scope.currentObj.name+'.obj')
+    viewer.update();
+    }
   });
   $scope.ifStopLi=function(name){
     if(!$scope.currentObj)
